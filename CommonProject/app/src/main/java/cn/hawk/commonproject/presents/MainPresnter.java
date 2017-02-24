@@ -2,6 +2,7 @@ package cn.hawk.commonproject.presents;
 
 import android.support.annotation.NonNull;
 
+import cn.hawk.commonproject.AppContext;
 import cn.hawk.commonproject.contracts.MainContract;
 
 /**
@@ -9,6 +10,7 @@ import cn.hawk.commonproject.contracts.MainContract;
  */
 
 public class MainPresnter implements MainContract.Presenter {
+    private static final String TAG = MainPresnter.class.getSimpleName();
     private final MainContract.View mMainView;
 
     public MainPresnter(@NonNull MainContract.View mainView) {
@@ -19,5 +21,6 @@ public class MainPresnter implements MainContract.Presenter {
     @Override
     public void start() {
         mMainView.showOutput("Data bind successfully");
+        AppContext.getInstance().logd(TAG, "Data bind successfully");
     }
 }
