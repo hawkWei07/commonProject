@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="img_min_height">71dp</dimen>
+    <dimen name="img_min_width">101dp</dimen>
+    <dimen name="img_max_size">155dp</dimen>
+</resources>
