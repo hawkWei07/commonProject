@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">CommonProject</string>
+
+    <string name="str_go_image">Image Handle</string>
 </resources>
