@@ -2,4 +2,5 @@
     <string name="app_name">CommonProject</string>
 
     <string name="str_go_image">Image Handle</string>
+    <string name="str_go_recycler">Recycler View</string>
 </resources>

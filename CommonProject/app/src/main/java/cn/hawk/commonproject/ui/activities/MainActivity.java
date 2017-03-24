@@ -1,10 +1,11 @@
-package cn.hawk.commonproject;
+package cn.hawk.commonproject.ui.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import cn.hawk.commonlib.base.BaseActivity;
 import cn.hawk.commonlib.utils.ActivityUtils;
+import cn.hawk.commonproject.R;
 import cn.hawk.commonproject.presents.MainPresnter;
 import cn.hawk.commonproject.ui.fragments.MainFragment;
 

@@ -2,7 +2,6 @@ package cn.hawk.commonproject.presents;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
 
 import cn.hawk.commonlib.utils.ImageUtils;
@@ -14,8 +13,8 @@ import cn.hawk.commonproject.contracts.ImageHandleContract;
  */
 
 public class ImageHandlePresenter implements ImageHandleContract.Presenter {
-    private static final String TAG = MainPresnter.class.getSimpleName();
-    private final ImageHandleContract.View imageHandleView;
+    private static final String TAG = ImageHandlePresenter.class.getSimpleName();
+    private final ImageHandleContract.View mView;
 
     private Context context;
 
@@ -24,8 +23,8 @@ public class ImageHandlePresenter implements ImageHandleContract.Presenter {
     private int minHeight;
 
     public ImageHandlePresenter(@NonNull Context context, @NonNull ImageHandleContract.View mainView) {
-        imageHandleView = mainView;
-        imageHandleView.setPresenter(this);
+        mView = mainView;
+        mView.setPresenter(this);
         this.context = context;
         maxSize = context.getResources().getDimensionPixelSize(R.dimen.img_max_size);
         minWidth = context.getResources().getDimensionPixelSize(R.dimen.img_min_width);
@@ -37,6 +36,6 @@ public class ImageHandlePresenter implements ImageHandleContract.Presenter {
         Bitmap original = ImageUtils.decodeScaleImage(context, R.drawable.test);
         int[] size = ImageUtils.cauculateSize(original.getWidth(), original.getHeight(), minWidth, minHeight, maxSize);
         Bitmap bubbleBitmap = ImageUtils.getBubbleShapeBitmap(context, original, R.drawable.input_bg_single);
-        imageHandleView.showImage(bubbleBitmap);
+        mView.showImage(bubbleBitmap);
     }
 }

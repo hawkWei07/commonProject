@@ -11,16 +11,18 @@ import cn.hawk.commonlib.base.BaseFragment;
 import cn.hawk.commonproject.R;
 import cn.hawk.commonproject.contracts.MainContract;
 import cn.hawk.commonproject.ui.activities.ImageHandleActivity;
+import cn.hawk.commonproject.ui.activities.RecyclerViewActivity;
 
 /**
  * Created by kehaowei on 2017/2/22.
  */
 
-public class MainFragment extends BaseFragment implements MainContract.View {
+public class MainFragment extends BaseFragment implements MainContract.View, View.OnClickListener {
     private MainContract.Presenter mPresenter;
 
     private TextView tvOutPut;
     private Button btnGoImage;
+    private Button btnGoRecycler;
 
     public static MainFragment newInstance() {
         Bundle args = new Bundle();
@@ -39,6 +41,7 @@ public class MainFragment extends BaseFragment implements MainContract.View {
         super.bindView();
         tvOutPut = (TextView) getView().findViewById(R.id.output);
         btnGoImage = (Button) getView().findViewById(R.id.go_image);
+        btnGoRecycler = (Button) getView().findViewById(R.id.go_recycler_view);
     }
 
     @Override
@@ -49,12 +52,8 @@ public class MainFragment extends BaseFragment implements MainContract.View {
     @Override
     protected void initEvent() {
         super.initEvent();
-        btnGoImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                goImageHandle();
-            }
-        });
+        btnGoImage.setOnClickListener(this);
+        btnGoRecycler.setOnClickListener(this);
     }
 
     @Override
@@ -82,5 +81,21 @@ public class MainFragment extends BaseFragment implements MainContract.View {
 
     private void goImageHandle() {
         startActivity(new Intent(getActivity(), ImageHandleActivity.class));
+    }
+
+    private void goRecyclerView() {
+        startActivity(new Intent(getActivity(), RecyclerViewActivity.class));
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.go_image:
+                goImageHandle();
+                break;
+            case R.id.go_recycler_view:
+                goRecyclerView();
+                break;
+        }
     }
 }
