@@ -2,6 +2,10 @@ package cn.hawk.commonproject.presents;
 
 import android.content.Context;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import cn.hawk.commonproject.R;
 import cn.hawk.commonproject.contracts.RecyclerViewContract;
 
 /**
@@ -21,6 +25,8 @@ public class RecyclerViewPresenter implements RecyclerViewContract.Presenter {
 
     @Override
     public void start() {
-
+        ArrayList<String> data = new ArrayList<>();
+        data.addAll(Arrays.asList(context.getResources().getStringArray(R.array.recycler_view_demo_content)));
+        mView.refreshList(data);
     }
 }
