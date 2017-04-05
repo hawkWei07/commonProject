@@ -6,5 +6,7 @@
     <dimen name="btn_margin">10dp</dimen>
     <dimen name="tv_common_padding">10dp</dimen>
 
+    <dimen name="item_common_margin">1dp</dimen>
+
     <dimen name="tv_textsize_middle">15sp</dimen>
 </resources>

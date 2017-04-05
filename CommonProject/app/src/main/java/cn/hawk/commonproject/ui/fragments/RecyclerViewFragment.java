@@ -3,16 +3,20 @@ package cn.hawk.commonproject.ui.fragments;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
 import java.util.ArrayList;
 
 import cn.hawk.commonlib.base.BaseFragment;
 import cn.hawk.commonlib.interfaces.OnItemClickListener;
+import cn.hawk.commonlib.utils.DividerGridItemDecoration;
 import cn.hawk.commonproject.R;
 import cn.hawk.commonproject.adapters.SimpleStringArrayAdapter;
+import cn.hawk.commonproject.adapters.StaggeredHomeAdapter;
 import cn.hawk.commonproject.contracts.RecyclerViewContract;
 
 /**
@@ -24,7 +28,8 @@ public class RecyclerViewFragment extends BaseFragment implements RecyclerViewCo
     private RecyclerViewContract.Presenter mPresenter;
 
     private RecyclerView mRecyclerView;
-    private SimpleStringArrayAdapter mAdapter;
+    /*private SimpleStringArrayAdapter mAdapter;*/
+    private StaggeredHomeAdapter mAdapter;
 
     public static RecyclerViewFragment newInstance() {
         Bundle args = new Bundle();
@@ -74,7 +79,8 @@ public class RecyclerViewFragment extends BaseFragment implements RecyclerViewCo
     @Override
     public void refreshList(ArrayList<String> infos) {
         if (null == mAdapter) {
-            mAdapter = new SimpleStringArrayAdapter(getActivity(), infos);
+            /*mAdapter = new SimpleStringArrayAdapter(getActivity(), infos);*/
+            mAdapter = new StaggeredHomeAdapter(getActivity(), infos);
             mAdapter.setmListener(this);
             mRecyclerView.setAdapter(mAdapter);
         } else {
@@ -84,11 +90,15 @@ public class RecyclerViewFragment extends BaseFragment implements RecyclerViewCo
 
     private void initRecyclerView() {
         if (null != mRecyclerView) {
-            mAdapter = new SimpleStringArrayAdapter(getActivity(), new ArrayList<String>());
+            /*mAdapter = new SimpleStringArrayAdapter(getActivity(), new ArrayList<String>());*/
+            mAdapter = new StaggeredHomeAdapter(getActivity(), new ArrayList<String>());
             mAdapter.setmListener(this);
-            mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+            /*mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));*/
+            /*mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 4));*/
+            mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL));
             mRecyclerView.setAdapter(mAdapter);
-            mRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
+            /*mRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));*/
+            /*mRecyclerView.addItemDecoration(new DividerGridItemDecoration(getActivity()));*/
             mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         }
     }

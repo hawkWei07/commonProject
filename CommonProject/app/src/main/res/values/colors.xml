@@ -7,4 +7,5 @@
     <color name="color_white">#fff</color>
     <color name="color_black">#000</color>
     <color name="color_999">#999</color>
+    <color name="color_custom_white">#dfdfdf</color>
 </resources>
