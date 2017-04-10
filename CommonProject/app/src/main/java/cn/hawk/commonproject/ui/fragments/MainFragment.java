@@ -10,6 +10,7 @@ import android.widget.TextView;
 import cn.hawk.commonlib.base.BaseFragment;
 import cn.hawk.commonproject.R;
 import cn.hawk.commonproject.contracts.MainContract;
+import cn.hawk.commonproject.ui.activities.CardDisplayActivity;
 import cn.hawk.commonproject.ui.activities.ImageHandleActivity;
 import cn.hawk.commonproject.ui.activities.RecyclerViewActivity;
 
@@ -23,6 +24,7 @@ public class MainFragment extends BaseFragment implements MainContract.View, Vie
     private TextView tvOutPut;
     private Button btnGoImage;
     private Button btnGoRecycler;
+    private Button btnGoCardDisplay;
 
     public static MainFragment newInstance() {
         Bundle args = new Bundle();
@@ -42,6 +44,7 @@ public class MainFragment extends BaseFragment implements MainContract.View, Vie
         tvOutPut = (TextView) getView().findViewById(R.id.output);
         btnGoImage = (Button) getView().findViewById(R.id.go_image);
         btnGoRecycler = (Button) getView().findViewById(R.id.go_recycler_view);
+        btnGoCardDisplay = (Button) getView().findViewById(R.id.go_card_display);
     }
 
     @Override
@@ -54,6 +57,7 @@ public class MainFragment extends BaseFragment implements MainContract.View, Vie
         super.initEvent();
         btnGoImage.setOnClickListener(this);
         btnGoRecycler.setOnClickListener(this);
+        btnGoCardDisplay.setOnClickListener(this);
     }
 
     @Override
@@ -87,6 +91,10 @@ public class MainFragment extends BaseFragment implements MainContract.View, Vie
         startActivity(new Intent(getActivity(), RecyclerViewActivity.class));
     }
 
+    private void goCardDisplay() {
+        startActivity(new Intent(getActivity(), CardDisplayActivity.class));
+    }
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -95,6 +103,9 @@ public class MainFragment extends BaseFragment implements MainContract.View, Vie
                 break;
             case R.id.go_recycler_view:
                 goRecyclerView();
+                break;
+            case R.id.go_card_display:
+                goCardDisplay();
                 break;
         }
     }

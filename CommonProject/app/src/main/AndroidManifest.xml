@@ -19,6 +19,14 @@
 
         <activity android:name=".ui.activities.ImageHandleActivity" />
         <activity android:name=".ui.activities.RecyclerViewActivity" />
+
+        <!-- Material design begin -->
+        <activity
+            android:name=".ui.activities.CardDisplayActivity"
+            android:label="@string/activity_label_poetry"
+            android:theme="@style/MaterialTestTheme" />
+        <!-- Material design end -->
+
     </application>
 
 </manifest>
