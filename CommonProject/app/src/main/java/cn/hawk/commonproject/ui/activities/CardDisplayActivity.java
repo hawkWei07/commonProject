@@ -1,6 +1,9 @@
 package cn.hawk.commonproject.ui.activities;
 
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 import cn.hawk.commonlib.base.BaseActivity;
 import cn.hawk.commonproject.R;
@@ -52,5 +55,27 @@ public class CardDisplayActivity extends BaseActivity implements CardDisplayCont
     protected void onResume() {
         super.onResume();
         mPresenter.start();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.card_display_toolbar, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.backup:
+                Toast.makeText(this, "You clicked Backup", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.delete:
+                Toast.makeText(this, "You clicked Delete", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.settings:
+                Toast.makeText(this, "You clicked Settings", Toast.LENGTH_SHORT).show();
+                break;
+        }
+        return true;
     }
 }
