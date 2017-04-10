@@ -1,5 +1,8 @@
 package cn.hawk.commonproject.ui.activities;
 
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,8 +18,10 @@ import cn.hawk.commonproject.presents.CardDisplayPresenter;
  */
 
 public class CardDisplayActivity extends BaseActivity implements CardDisplayContract.View {
-    Toolbar toolbar;
     private CardDisplayContract.Presenter mPresenter;
+
+    Toolbar toolbar;
+    DrawerLayout mDrawerLayout;
 
     @Override
     protected int getContentId() {
@@ -27,6 +32,7 @@ public class CardDisplayActivity extends BaseActivity implements CardDisplayCont
     protected void bindView() {
         super.bindView();
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
     }
 
     @Override
@@ -39,6 +45,11 @@ public class CardDisplayActivity extends BaseActivity implements CardDisplayCont
     protected void initView() {
         super.initView();
         setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        if (null != actionBar) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
+        }
     }
 
     @Override
@@ -74,6 +85,9 @@ public class CardDisplayActivity extends BaseActivity implements CardDisplayCont
                 break;
             case R.id.settings:
                 Toast.makeText(this, "You clicked Settings", Toast.LENGTH_SHORT).show();
+                break;
+            case android.R.id.home:
+                mDrawerLayout.openDrawer(GravityCompat.START);
                 break;
         }
         return true;
