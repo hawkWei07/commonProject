@@ -10,4 +10,10 @@
     <string name="toolbar_title_delete">删除</string>
     <string name="toolbar_title_setting">设置</string>
     <!-- Title of toolbar for card display end -->
+
+    <!-- Title of nav view for card display begin -->
+    <string name="nav_title_author">作者</string>
+    <string name="nav_title_time">朝代</string>
+    <string name="nav_title_type">类型</string>
+    <!-- Title of nav view for card display end -->
 </resources>

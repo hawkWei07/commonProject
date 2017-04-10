@@ -1,5 +1,7 @@
 package cn.hawk.commonproject.ui.activities;
 
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -22,6 +24,7 @@ public class CardDisplayActivity extends BaseActivity implements CardDisplayCont
 
     Toolbar toolbar;
     DrawerLayout mDrawerLayout;
+    NavigationView navView;
 
     @Override
     protected int getContentId() {
@@ -33,6 +36,7 @@ public class CardDisplayActivity extends BaseActivity implements CardDisplayCont
         super.bindView();
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        navView = (NavigationView) findViewById(R.id.nav_view);
     }
 
     @Override
@@ -50,11 +54,19 @@ public class CardDisplayActivity extends BaseActivity implements CardDisplayCont
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
         }
+        navView.setCheckedItem(R.id.nav_author);
     }
 
     @Override
     protected void initEvent() {
         super.initEvent();
+        navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                mDrawerLayout.closeDrawers();
+                return true;
+            }
+        });
     }
 
     @Override

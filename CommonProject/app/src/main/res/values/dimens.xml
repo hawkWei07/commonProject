@@ -9,4 +9,9 @@
     <dimen name="item_common_margin">1dp</dimen>
 
     <dimen name="tv_textsize_middle">15sp</dimen>
+
+    <dimen name="nav_header_common_height">180dp</dimen>
+    <dimen name="nav_header_common_padding">10dp</dimen>
+
+    <dimen name="avatar_size">70dp</dimen>
 </resources>
