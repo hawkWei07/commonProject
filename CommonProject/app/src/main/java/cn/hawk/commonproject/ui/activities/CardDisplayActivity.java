@@ -1,13 +1,16 @@
 package cn.hawk.commonproject.ui.activities;
 
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import cn.hawk.commonlib.base.BaseActivity;
@@ -25,6 +28,7 @@ public class CardDisplayActivity extends BaseActivity implements CardDisplayCont
     Toolbar toolbar;
     DrawerLayout mDrawerLayout;
     NavigationView navView;
+    FloatingActionButton fab;
 
     @Override
     protected int getContentId() {
@@ -37,6 +41,7 @@ public class CardDisplayActivity extends BaseActivity implements CardDisplayCont
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         navView = (NavigationView) findViewById(R.id.nav_view);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
     }
 
     @Override
@@ -67,6 +72,19 @@ public class CardDisplayActivity extends BaseActivity implements CardDisplayCont
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 mDrawerLayout.closeDrawers();
                 return true;
+            }
+        });
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, R.string.alert_data_deleted, Snackbar.LENGTH_SHORT)
+                        .setAction(R.string.undo, new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Toast.makeText(CardDisplayActivity.this, R.string.alert_data_restored, Toast.LENGTH_SHORT).show();
+                            }
+                        }).show();
             }
         });
     }

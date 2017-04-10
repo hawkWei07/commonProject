@@ -5,6 +5,8 @@
     <string name="str_go_recycler">Recycler View</string>
     <string name="activity_label_poetry">诗词卡</string>
 
+    <string name="undo">撤销</string>
+
     <!-- Title of toolbar for card display begin -->
     <string name="toolbar_title_backup">备份</string>
     <string name="toolbar_title_delete">删除</string>
@@ -16,4 +18,9 @@
     <string name="nav_title_time">朝代</string>
     <string name="nav_title_type">类型</string>
     <!-- Title of nav view for card display end -->
+
+    <!-- Alert strings begin -->
+    <string name="alert_data_deleted">数据已删除</string>
+    <string name="alert_data_restored">数据已恢复</string>
+    <!-- Alert strings end -->
 </resources>
