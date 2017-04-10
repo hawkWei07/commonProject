@@ -55,6 +55,8 @@ public class CardDisplayActivity extends BaseActivity implements CardDisplayCont
             actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
         }
         navView.setCheckedItem(R.id.nav_author);
+        // 禁用图标渲染
+        navView.setItemIconTintList(null);
     }
 
     @Override
