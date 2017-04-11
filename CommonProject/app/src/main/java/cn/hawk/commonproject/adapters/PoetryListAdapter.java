@@ -10,6 +10,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import cn.hawk.commonlib.interfaces.OnItemClickListener;
+import cn.hawk.commonlib.utils.LogUtils;
 import cn.hawk.commonproject.R;
 import cn.hawk.commonproject.models.PoetryItemBean;
 
@@ -18,6 +19,7 @@ import cn.hawk.commonproject.models.PoetryItemBean;
  */
 
 public class PoetryListAdapter extends RecyclerView.Adapter<PoetryListAdapter.ViewHolder> {
+    private static final String TAG = PoetryListAdapter.class.getSimpleName();
     private Context context;
     private ArrayList<PoetryItemBean> mData = new ArrayList<>();
     private OnItemClickListener mListener;

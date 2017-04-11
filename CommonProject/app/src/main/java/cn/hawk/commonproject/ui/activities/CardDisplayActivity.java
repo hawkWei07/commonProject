@@ -155,7 +155,7 @@ public class CardDisplayActivity extends BaseActivity implements CardDisplayCont
 
     private void initRecyclerView() {
         if (null != recyclerView) {
-            recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+            recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
             recyclerView.setAdapter(mAdapter);
             recyclerView.setItemAnimator(new DefaultItemAnimator());
         }
