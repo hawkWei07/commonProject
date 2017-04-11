@@ -7,28 +7,41 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import cn.hawk.commonlib.base.BaseActivity;
+import cn.hawk.commonlib.interfaces.OnItemClickListener;
 import cn.hawk.commonproject.R;
+import cn.hawk.commonproject.adapters.PoetryListAdapter;
+import cn.hawk.commonproject.adapters.StaggeredHomeAdapter;
 import cn.hawk.commonproject.contracts.CardDisplayContract;
+import cn.hawk.commonproject.models.PoetryItemBean;
 import cn.hawk.commonproject.presents.CardDisplayPresenter;
 
 /**
  * Created by kehaowei on 2017/4/10.
  */
 
-public class CardDisplayActivity extends BaseActivity implements CardDisplayContract.View {
+public class CardDisplayActivity extends BaseActivity implements CardDisplayContract.View, OnItemClickListener {
     private CardDisplayContract.Presenter mPresenter;
 
     Toolbar toolbar;
     DrawerLayout mDrawerLayout;
     NavigationView navView;
     FloatingActionButton fab;
+    RecyclerView recyclerView;
+
+    PoetryListAdapter mAdapter;
 
     @Override
     protected int getContentId() {
@@ -42,12 +55,15 @@ public class CardDisplayActivity extends BaseActivity implements CardDisplayCont
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         navView = (NavigationView) findViewById(R.id.nav_view);
         fab = (FloatingActionButton) findViewById(R.id.fab);
+        recyclerView = (RecyclerView) findViewById(R.id.rv_poetry_list);
     }
 
     @Override
     protected void initData() {
         super.initData();
-        mPresenter = new CardDisplayPresenter(this);
+        mPresenter = new CardDisplayPresenter(this, this);
+        mAdapter = new PoetryListAdapter(this, new ArrayList<PoetryItemBean>());
+        mAdapter.setmListener(this);
     }
 
     @Override
@@ -62,6 +78,8 @@ public class CardDisplayActivity extends BaseActivity implements CardDisplayCont
         navView.setCheckedItem(R.id.nav_author);
         // 禁用图标渲染
         navView.setItemIconTintList(null);
+
+        initRecyclerView();
     }
 
     @Override
@@ -123,5 +141,33 @@ public class CardDisplayActivity extends BaseActivity implements CardDisplayCont
                 break;
         }
         return true;
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+
+    }
+
+    @Override
+    public void onItemLongClick(View view, int position) {
+
+    }
+
+    private void initRecyclerView() {
+        if (null != recyclerView) {
+            recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+            recyclerView.setAdapter(mAdapter);
+            recyclerView.setItemAnimator(new DefaultItemAnimator());
+        }
+    }
+
+    @Override
+    public void showPoetries(ArrayList<PoetryItemBean> infos) {
+        if (null == mAdapter) {
+            mAdapter = new PoetryListAdapter(this, infos);
+            mAdapter.setmListener(this);
+        } else {
+            mAdapter.refresh(infos);
+        }
     }
 }

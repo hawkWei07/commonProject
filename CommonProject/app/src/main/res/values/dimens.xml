@@ -7,6 +7,7 @@
     <dimen name="tv_common_padding">10dp</dimen>
 
     <dimen name="item_common_margin">1dp</dimen>
+    <dimen name="text_common_margin">5dp</dimen>
 
     <dimen name="tv_textsize_middle">15sp</dimen>
 
@@ -17,4 +18,14 @@
 
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="fab_elevation">8dp</dimen>
+
+    <dimen name="card_view_common_margin">5dp</dimen>
+    <dimen name="card_view_radius_middle">5dp</dimen>
+    <dimen name="card_view_elevation_middle">5dp</dimen>
+
+    <dimen name="text_size_poetry_title">18sp</dimen>
+    <dimen name="text_size_poetry_time">14sp</dimen>
+    <dimen name="text_size_poetry_author">16sp</dimen>
+    <dimen name="text_size_poetry_content">14sp</dimen>
+
 </resources>

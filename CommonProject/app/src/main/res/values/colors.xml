@@ -8,4 +8,9 @@
     <color name="color_black">#000</color>
     <color name="color_999">#999</color>
     <color name="color_custom_white">#dfdfdf</color>
+
+    <color name="color_poetry_title">@color/color_black</color>
+    <color name="color_poetry_time">@color/colorAccent</color>
+    <color name="color_poetry_author">@color/colorPrimary</color>
+    <color name="color_poetry_content">@color/color_black</color>
 </resources>

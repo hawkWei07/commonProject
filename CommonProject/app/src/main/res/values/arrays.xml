@@ -64,4 +64,22 @@
         <item>在天愿作比翼鸟，在地愿为连理枝。</item>
         <item>天长地久有时尽，此恨绵绵无绝期。</item>
     </string-array>
+
+    <integer-array name="poetry_time_id">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </integer-array>
+
+    <string-array name="poetry_time_value">
+        <item>唐</item>
+        <item>宋</item>
+        <item>元</item>
+        <item>明</item>
+        <item>清</item>
+        <item>其他</item>
+    </string-array>
 </resources>
