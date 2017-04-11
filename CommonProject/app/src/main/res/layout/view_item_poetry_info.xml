@@ -28,20 +28,20 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/poetry_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/text_common_margin"
-                android:textColor="@color/color_poetry_time"
-                android:textSize="@dimen/text_size_poetry_time" />
-
-            <TextView
                 android:id="@+id/poetry_author"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_common_margin"
                 android:textColor="@color/color_poetry_author"
                 android:textSize="@dimen/text_size_poetry_author" />
+
+            <TextView
+                android:id="@+id/poetry_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/text_common_margin"
+                android:textColor="@color/color_poetry_time"
+                android:textSize="@dimen/text_size_poetry_time" />
         </LinearLayout>
     </LinearLayout>
 </android.support.v7.widget.CardView>
