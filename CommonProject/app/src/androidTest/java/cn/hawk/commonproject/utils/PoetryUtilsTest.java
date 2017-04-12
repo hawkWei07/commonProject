@@ -2,6 +2,7 @@ package cn.hawk.commonproject.utils;
 
 import android.app.Instrumentation;
 import android.support.test.InstrumentationRegistry;
+import android.widget.Toast;
 
 import org.junit.Test;
 
@@ -23,6 +24,16 @@ public class PoetryUtilsTest {
         PoetriesListBean bean = PoetryUtils.getAllPoetries(InstrumentationRegistry.getInstrumentation().getContext());
         for (PoetryItemBean item : bean.getPoetries()) {
             LogUtils.getInstance().logd(TAG, item.toString());
+        }
+    }
+
+    @Test
+    public void getPoetryById() throws Exception {
+        PoetryItemBean bean = PoetryUtils.getPoetryById(InstrumentationRegistry.getInstrumentation().getContext(), 20);
+        if (null != bean) {
+            LogUtils.getInstance().logd(TAG, bean.toString());
+        } else {
+            LogUtils.getInstance().logd(TAG, "Poetry not exists");
         }
     }
 
