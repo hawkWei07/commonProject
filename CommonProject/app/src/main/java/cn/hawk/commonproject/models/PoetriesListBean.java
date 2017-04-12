@@ -16,4 +16,12 @@ public class PoetriesListBean {
     public void setPoetries(ArrayList<PoetryItemBean> poetries) {
         this.poetries = poetries;
     }
+
+    public PoetryItemBean getPoetryById(int id) {
+        for (PoetryItemBean item : poetries) {
+            if (item.getId() == id)
+                return item;
+        }
+        return null;
+    }
 }

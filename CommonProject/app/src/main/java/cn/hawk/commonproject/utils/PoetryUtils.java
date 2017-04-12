@@ -37,4 +37,11 @@ public class PoetryUtils {
         return body.getData();
     }
 
+    public static PoetryItemBean getPoetryById(Context context, int id) {
+        PoetriesListBean body = getDefaultPoetries(context);
+        if (null == body)
+            return null;
+        return body.getPoetryById(id);
+    }
+
 }

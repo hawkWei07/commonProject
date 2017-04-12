@@ -18,6 +18,7 @@ public class CardDisplayPresenter implements CardDisplayContract.Presenter {
 
     Context context;
     private final CardDisplayContract.View mView;
+    private ArrayList<PoetryItemBean> infos = new ArrayList<>();
 
     public CardDisplayPresenter(Context context, CardDisplayContract.View mView) {
         this.context = context;
@@ -33,6 +34,16 @@ public class CardDisplayPresenter implements CardDisplayContract.Presenter {
         ArrayList<PoetryItemBean> infos = body.getPoetries();
         if (null == infos || infos.size() == 0)
             return;
+        this.infos = infos;
         mView.showPoetries(infos);
+    }
+
+    @Override
+    public PoetryItemBean getPoetryByPosition(int position) {
+        if (null == infos || infos.size() == 0)
+            return null;
+        if (position < 0 || position >= infos.size())
+            return null;
+        return infos.get(position);
     }
 }

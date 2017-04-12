@@ -1,5 +1,6 @@
 package cn.hawk.commonproject.ui.activities;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -24,6 +25,7 @@ import cn.hawk.commonlib.interfaces.OnItemClickListener;
 import cn.hawk.commonproject.R;
 import cn.hawk.commonproject.adapters.PoetryListAdapter;
 import cn.hawk.commonproject.adapters.StaggeredHomeAdapter;
+import cn.hawk.commonproject.common.Constants;
 import cn.hawk.commonproject.contracts.CardDisplayContract;
 import cn.hawk.commonproject.models.PoetryItemBean;
 import cn.hawk.commonproject.presents.CardDisplayPresenter;
@@ -145,7 +147,15 @@ public class CardDisplayActivity extends BaseActivity implements CardDisplayCont
 
     @Override
     public void onItemClick(View view, int position) {
-
+        PoetryItemBean item = mPresenter.getPoetryByPosition(position);
+        if (null == item)
+            return;
+        Intent intent = new Intent(this, PoetryDetailActivity.class);
+        intent.putExtra(Constants.EXTRA_KEY_ID, item.getId());
+        intent.putExtra(Constants.EXTRA_KEY_TITLE, item.getTitle());
+        intent.putExtra(Constants.EXTRA_KEY_AUTHOR, item.getAuthor());
+        intent.putExtra(Constants.EXTRA_KEY_TIME, item.getTime());
+        startActivity(intent);
     }
 
     @Override

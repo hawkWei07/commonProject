@@ -25,6 +25,9 @@
             android:name=".ui.activities.CardDisplayActivity"
             android:label="@string/activity_label_poetry"
             android:theme="@style/MaterialTestTheme" />
+        <activity
+            android:name=".ui.activities.PoetryDetailActivity"
+            android:theme="@style/PoetryDetailTheme" />
         <!-- Material design end -->
 
     </application>

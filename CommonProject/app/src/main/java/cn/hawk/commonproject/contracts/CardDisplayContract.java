@@ -16,6 +16,6 @@ public interface CardDisplayContract {
     }
 
     interface Presenter extends BasePresenter {
-
+        PoetryItemBean getPoetryByPosition(int position);
     }
 }
