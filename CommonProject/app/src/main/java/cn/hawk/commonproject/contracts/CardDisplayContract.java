@@ -13,9 +13,13 @@ import cn.hawk.commonproject.models.PoetryItemBean;
 public interface CardDisplayContract {
     interface View extends BaseView<Presenter> {
         void showPoetries(ArrayList<PoetryItemBean> infos);
+
+        void dismissRefresh();
     }
 
     interface Presenter extends BasePresenter {
+        void refreshPoetries();
+
         PoetryItemBean getPoetryByPosition(int position);
     }
 }

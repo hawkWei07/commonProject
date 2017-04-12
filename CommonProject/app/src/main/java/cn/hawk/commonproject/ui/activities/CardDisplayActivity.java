@@ -7,6 +7,7 @@ import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
@@ -42,6 +43,7 @@ public class CardDisplayActivity extends BaseActivity implements CardDisplayCont
     NavigationView navView;
     FloatingActionButton fab;
     RecyclerView recyclerView;
+    SwipeRefreshLayout swipeRefreshLayout;
 
     PoetryListAdapter mAdapter;
 
@@ -58,6 +60,7 @@ public class CardDisplayActivity extends BaseActivity implements CardDisplayCont
         navView = (NavigationView) findViewById(R.id.nav_view);
         fab = (FloatingActionButton) findViewById(R.id.fab);
         recyclerView = (RecyclerView) findViewById(R.id.rv_poetry_list);
+        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh);
     }
 
     @Override
@@ -81,6 +84,7 @@ public class CardDisplayActivity extends BaseActivity implements CardDisplayCont
         // 禁用图标渲染
         navView.setItemIconTintList(null);
 
+        initSwipeRefresh();
         initRecyclerView();
     }
 
@@ -163,6 +167,16 @@ public class CardDisplayActivity extends BaseActivity implements CardDisplayCont
 
     }
 
+    private void initSwipeRefresh() {
+        swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mPresenter.refreshPoetries();
+            }
+        });
+    }
+
     private void initRecyclerView() {
         if (null != recyclerView) {
             recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
@@ -172,12 +186,27 @@ public class CardDisplayActivity extends BaseActivity implements CardDisplayCont
     }
 
     @Override
-    public void showPoetries(ArrayList<PoetryItemBean> infos) {
-        if (null == mAdapter) {
-            mAdapter = new PoetryListAdapter(this, infos);
-            mAdapter.setmListener(this);
-        } else {
-            mAdapter.refresh(infos);
-        }
+    public void showPoetries(final ArrayList<PoetryItemBean> infos) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (null == mAdapter) {
+                    mAdapter = new PoetryListAdapter(CardDisplayActivity.this, infos);
+                    mAdapter.setmListener(CardDisplayActivity.this);
+                } else {
+                    mAdapter.refresh(infos);
+                }
+            }
+        });
+    }
+
+    @Override
+    public void dismissRefresh() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
     }
 }

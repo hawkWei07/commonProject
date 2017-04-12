@@ -4,6 +4,7 @@ import android.content.Context;
 
 import java.util.ArrayList;
 
+import cn.hawk.commonlib.utils.LogUtils;
 import cn.hawk.commonproject.contracts.CardDisplayContract;
 import cn.hawk.commonproject.models.PoetriesListBean;
 import cn.hawk.commonproject.models.PoetryItemBean;
@@ -36,6 +37,28 @@ public class CardDisplayPresenter implements CardDisplayContract.Presenter {
             return;
         this.infos = infos;
         mView.showPoetries(infos);
+    }
+
+    @Override
+    public void refreshPoetries() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                PoetriesListBean body = PoetryUtils.getAllPoetries(context);
+                if (null != body) {
+                    ArrayList<PoetryItemBean> infos = body.getPoetries();
+                    if (null != infos && infos.size() > 0)
+                        CardDisplayPresenter.this.infos = infos;
+                    mView.showPoetries(infos);
+                }
+                mView.dismissRefresh();
+            }
+        }).start();
     }
 
     @Override
