@@ -15,32 +15,33 @@ public abstract class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         logUtils = initLogUtil();
-        logUtils.setDebug(true);
     }
 
     public LogUtils getLogUtils() {
+        if (null == logUtils)
+            logUtils = initLogUtil();
         return logUtils;
     }
 
     protected abstract LogUtils initLogUtil();
 
     public void logv(String tag, String msg) {
-        logUtils.logv(tag, msg);
+        getLogUtils().logv(tag, msg);
     }
 
     public void logi(String tag, String msg) {
-        logUtils.logi(tag, msg);
+        getLogUtils().logi(tag, msg);
     }
 
     public void logd(String tag, String msg) {
-        logUtils.logd(tag, msg);
+        getLogUtils().logd(tag, msg);
     }
 
     public void logw(String tag, String msg) {
-        logUtils.logw(tag, msg);
+        getLogUtils().logw(tag, msg);
     }
 
     public void loge(String tag, String msg) {
-        logUtils.loge(tag, msg);
+        getLogUtils().loge(tag, msg);
     }
 }

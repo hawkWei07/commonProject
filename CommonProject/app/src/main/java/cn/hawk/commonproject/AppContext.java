@@ -22,6 +22,9 @@ public class AppContext extends BaseApplication {
 
     @Override
     protected LogUtils initLogUtil() {
-        return LogUtils.getInstance("CommonProject");
+        LogUtils lu = LogUtils.getInstance("CommonProject");
+        lu.setDebug(true);
+        lu.setLogLevel(LogUtils.LOG_LEVEL_DEBUG);
+        return lu;
     }
 }
