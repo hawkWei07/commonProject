@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <cn.hawk.commonlib.widgets.CoverFlowView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/coverflow"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/cover_flow_height"
+        app:coverflowGravity="center_vertical"
+        app:reflectionGap="0dp"
+        app:reflectionHeight="0%"
+        app:visibleImage="5" />
+
+    <Button
+        android:id="@+id/change_bitmap_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="change bitmap" />
+</LinearLayout>

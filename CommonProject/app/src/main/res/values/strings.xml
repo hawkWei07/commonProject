@@ -4,6 +4,7 @@
     <string name="str_go_image">Image Handle</string>
     <string name="str_go_recycler">Recycler View</string>
     <string name="activity_label_poetry">诗词卡</string>
+    <string name="activity_label_cover_flow">Cover flow</string>
 
     <string name="undo">撤销</string>
 

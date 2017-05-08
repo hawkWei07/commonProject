@@ -21,6 +21,8 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="fab_elevation">8dp</dimen>
 
+    <dimen name="cover_flow_height">400dp</dimen>
+
     <dimen name="card_view_common_margin">5dp</dimen>
     <dimen name="card_view_radius_middle">5dp</dimen>
     <dimen name="card_view_elevation_middle">5dp</dimen>

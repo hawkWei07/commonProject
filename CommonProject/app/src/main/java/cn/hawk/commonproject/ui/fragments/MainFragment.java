@@ -11,6 +11,7 @@ import cn.hawk.commonlib.base.BaseFragment;
 import cn.hawk.commonproject.R;
 import cn.hawk.commonproject.contracts.MainContract;
 import cn.hawk.commonproject.ui.activities.CardDisplayActivity;
+import cn.hawk.commonproject.ui.activities.CoverFlowActivity;
 import cn.hawk.commonproject.ui.activities.ImageHandleActivity;
 import cn.hawk.commonproject.ui.activities.RecyclerViewActivity;
 
@@ -25,6 +26,7 @@ public class MainFragment extends BaseFragment implements MainContract.View, Vie
     private Button btnGoImage;
     private Button btnGoRecycler;
     private Button btnGoCardDisplay;
+    private Button btnGoCoverFlow;
 
     public static MainFragment newInstance() {
         Bundle args = new Bundle();
@@ -45,6 +47,7 @@ public class MainFragment extends BaseFragment implements MainContract.View, Vie
         btnGoImage = (Button) getView().findViewById(R.id.go_image);
         btnGoRecycler = (Button) getView().findViewById(R.id.go_recycler_view);
         btnGoCardDisplay = (Button) getView().findViewById(R.id.go_card_display);
+        btnGoCoverFlow = (Button) getView().findViewById(R.id.go_cover_flow);
     }
 
     @Override
@@ -58,6 +61,7 @@ public class MainFragment extends BaseFragment implements MainContract.View, Vie
         btnGoImage.setOnClickListener(this);
         btnGoRecycler.setOnClickListener(this);
         btnGoCardDisplay.setOnClickListener(this);
+        btnGoCoverFlow.setOnClickListener(this);
     }
 
     @Override
@@ -95,6 +99,10 @@ public class MainFragment extends BaseFragment implements MainContract.View, Vie
         startActivity(new Intent(getActivity(), CardDisplayActivity.class));
     }
 
+    private void goCoverFlow() {
+        startActivity(new Intent(getActivity(), CoverFlowActivity.class));
+    }
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -106,6 +114,9 @@ public class MainFragment extends BaseFragment implements MainContract.View, Vie
                 break;
             case R.id.go_card_display:
                 goCardDisplay();
+                break;
+            case R.id.go_cover_flow:
+                goCoverFlow();
                 break;
         }
     }

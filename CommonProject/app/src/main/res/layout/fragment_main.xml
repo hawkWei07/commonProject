@@ -40,6 +40,12 @@
                 android:layout_height="wrap_content"
                 android:text="@string/activity_label_poetry" />
 
+            <Button
+                android:id="@+id/go_cover_flow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_label_cover_flow" />
+
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>
