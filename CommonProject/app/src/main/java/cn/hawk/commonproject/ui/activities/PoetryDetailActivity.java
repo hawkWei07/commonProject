@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import cn.hawk.commonlib.base.BaseActivity;
+import cn.hawk.commonlib.base.MVPActivity;
 import cn.hawk.commonproject.R;
 import cn.hawk.commonproject.common.Constants;
 import cn.hawk.commonproject.contracts.PoetryDetailContract;
@@ -20,8 +21,7 @@ import cn.hawk.commonproject.presents.PoetryDetailPresenter;
  * Created by kehaowei on 2017/4/12.
  */
 
-public class PoetryDetailActivity extends BaseActivity implements PoetryDetailContract.View {
-    private PoetryDetailContract.Presenter mPresenter;
+public class PoetryDetailActivity extends MVPActivity<PoetryDetailPresenter> implements PoetryDetailContract.View {
 
     private int poetryId;
     private String poetryTitle;
@@ -59,7 +59,7 @@ public class PoetryDetailActivity extends BaseActivity implements PoetryDetailCo
         poetryTitle = intent.getStringExtra(Constants.EXTRA_KEY_TITLE);
         poetryAuthor = intent.getStringExtra(Constants.EXTRA_KEY_AUTHOR);
         poetryTime = intent.getStringExtra(Constants.EXTRA_KEY_TIME);
-        mPresenter = new PoetryDetailPresenter(this, this, poetryId);
+        mPresenter.setPoetryId(poetryId);
     }
 
     @Override
@@ -107,16 +107,16 @@ public class PoetryDetailActivity extends BaseActivity implements PoetryDetailCo
     }
 
     @Override
-    public void setPresenter(PoetryDetailContract.Presenter presenter) {
-        mPresenter = presenter;
-    }
-
-    @Override
     public void showPoetryContent(String content) {
         if (TextUtils.isEmpty(content))
             return;
         if (null != this.content) {
             this.content.setText(content);
         }
+    }
+
+    @Override
+    public PoetryDetailPresenter createPresenter() {
+        return new PoetryDetailPresenter(this, this);
     }
 }

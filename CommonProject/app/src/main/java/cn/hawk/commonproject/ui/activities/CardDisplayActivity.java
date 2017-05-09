@@ -22,6 +22,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import cn.hawk.commonlib.base.BaseActivity;
+import cn.hawk.commonlib.base.MVPActivity;
 import cn.hawk.commonlib.interfaces.OnItemClickListener;
 import cn.hawk.commonproject.R;
 import cn.hawk.commonproject.adapters.PoetryListAdapter;
@@ -35,8 +36,7 @@ import cn.hawk.commonproject.presents.CardDisplayPresenter;
  * Created by kehaowei on 2017/4/10.
  */
 
-public class CardDisplayActivity extends BaseActivity implements CardDisplayContract.View, OnItemClickListener {
-    private CardDisplayContract.Presenter mPresenter;
+public class CardDisplayActivity extends MVPActivity<CardDisplayPresenter> implements CardDisplayContract.View, OnItemClickListener {
 
     Toolbar toolbar;
     DrawerLayout mDrawerLayout;
@@ -66,7 +66,6 @@ public class CardDisplayActivity extends BaseActivity implements CardDisplayCont
     @Override
     protected void initData() {
         super.initData();
-        mPresenter = new CardDisplayPresenter(this, this);
         mAdapter = new PoetryListAdapter(this, new ArrayList<PoetryItemBean>());
         mAdapter.setmListener(this);
     }
@@ -113,10 +112,6 @@ public class CardDisplayActivity extends BaseActivity implements CardDisplayCont
         });
     }
 
-    @Override
-    public void setPresenter(CardDisplayContract.Presenter presenter) {
-        mPresenter = presenter;
-    }
 
     @Override
     protected void onResume() {
@@ -208,5 +203,10 @@ public class CardDisplayActivity extends BaseActivity implements CardDisplayCont
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
+    }
+
+    @Override
+    public CardDisplayPresenter createPresenter() {
+        return new CardDisplayPresenter(this, this);
     }
 }

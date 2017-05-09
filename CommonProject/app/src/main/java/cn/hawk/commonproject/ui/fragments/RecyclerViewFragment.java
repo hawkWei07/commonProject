@@ -12,20 +12,20 @@ import android.view.View;
 import java.util.ArrayList;
 
 import cn.hawk.commonlib.base.BaseFragment;
+import cn.hawk.commonlib.base.MVPFragment;
 import cn.hawk.commonlib.interfaces.OnItemClickListener;
 import cn.hawk.commonlib.utils.DividerGridItemDecoration;
 import cn.hawk.commonproject.R;
 import cn.hawk.commonproject.adapters.SimpleStringArrayAdapter;
 import cn.hawk.commonproject.adapters.StaggeredHomeAdapter;
 import cn.hawk.commonproject.contracts.RecyclerViewContract;
+import cn.hawk.commonproject.presents.RecyclerViewPresenter;
 
 /**
  * Created by kehaowei on 2017/3/24.
  */
 
-public class RecyclerViewFragment extends BaseFragment implements RecyclerViewContract.View, OnItemClickListener {
-
-    private RecyclerViewContract.Presenter mPresenter;
+public class RecyclerViewFragment extends MVPFragment<RecyclerViewPresenter> implements RecyclerViewContract.View, OnItemClickListener {
 
     private RecyclerView mRecyclerView;
     /*private SimpleStringArrayAdapter mAdapter;*/
@@ -63,11 +63,6 @@ public class RecyclerViewFragment extends BaseFragment implements RecyclerViewCo
     @Override
     protected int getContentId() {
         return R.layout.fragment_recycler_view;
-    }
-
-    @Override
-    public void setPresenter(RecyclerViewContract.Presenter presenter) {
-        mPresenter = presenter;
     }
 
     @Override
@@ -111,5 +106,10 @@ public class RecyclerViewFragment extends BaseFragment implements RecyclerViewCo
     @Override
     public void onItemLongClick(View view, int position) {
         mAdapter.removeData(position);
+    }
+
+    @Override
+    public RecyclerViewPresenter createPresenter() {
+        return new RecyclerViewPresenter(getActivity(), this);
     }
 }

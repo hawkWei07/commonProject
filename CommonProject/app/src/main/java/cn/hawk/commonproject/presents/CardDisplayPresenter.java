@@ -4,6 +4,7 @@ import android.content.Context;
 
 import java.util.ArrayList;
 
+import cn.hawk.commonlib.base.CommonPresenter;
 import cn.hawk.commonlib.utils.LogUtils;
 import cn.hawk.commonproject.contracts.CardDisplayContract;
 import cn.hawk.commonproject.models.PoetriesListBean;
@@ -14,7 +15,7 @@ import cn.hawk.commonproject.utils.PoetryUtils;
  * Created by kehaowei on 2017/4/10.
  */
 
-public class CardDisplayPresenter implements CardDisplayContract.Presenter {
+public class CardDisplayPresenter extends CommonPresenter implements CardDisplayContract.Presenter {
     private static final String TAG = CardDisplayPresenter.class.getSimpleName();
 
     Context context;
@@ -24,7 +25,6 @@ public class CardDisplayPresenter implements CardDisplayContract.Presenter {
     public CardDisplayPresenter(Context context, CardDisplayContract.View mView) {
         this.context = context;
         this.mView = mView;
-        this.mView.setPresenter(this);
     }
 
     @Override

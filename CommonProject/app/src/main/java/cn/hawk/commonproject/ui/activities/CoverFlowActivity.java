@@ -12,7 +12,6 @@ import cn.hawk.commonproject.ui.fragments.CoverFlowFragment;
  */
 
 public class CoverFlowActivity extends BaseActivity {
-    private CoverFlowContract.Presenter mPresenter;
     private CoverFlowFragment mFragment;
 
     @Override
@@ -33,7 +32,6 @@ public class CoverFlowActivity extends BaseActivity {
     @Override
     protected void initData() {
         super.initData();
-        mPresenter = new CoverFlowPresenter(this, mFragment);
     }
 
     @Override

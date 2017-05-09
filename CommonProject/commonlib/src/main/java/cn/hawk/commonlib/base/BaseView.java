@@ -5,5 +5,4 @@ package cn.hawk.commonlib.base;
  */
 
 public interface BaseView<T> {
-    void setPresenter(T presenter);
 }

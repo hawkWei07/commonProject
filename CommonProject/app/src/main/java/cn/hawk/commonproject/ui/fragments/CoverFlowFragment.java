@@ -5,33 +5,28 @@ import android.view.View;
 import android.widget.Button;
 
 import cn.hawk.commonlib.base.BaseFragment;
+import cn.hawk.commonlib.base.MVPFragment;
 import cn.hawk.commonlib.widgets.CoverFlowView;
 import cn.hawk.commonproject.AppContext;
 import cn.hawk.commonproject.R;
 import cn.hawk.commonproject.adapters.MyCoverFlowAdapter;
 import cn.hawk.commonproject.contracts.CoverFlowContract;
+import cn.hawk.commonproject.presents.CoverFlowPresenter;
 
 /**
  * Created by kehaowei on 2017/5/8.
  */
 
-public class CoverFlowFragment extends BaseFragment implements
+public class CoverFlowFragment extends MVPFragment<CoverFlowPresenter> implements
         CoverFlowContract.View,
         CoverFlowView.CoverFlowListener<MyCoverFlowAdapter>,
         CoverFlowView.TopImageLongClickListener {
 
     protected static final String VIEW_LOG_TAG = "CoverFlowDemo";
 
-    private CoverFlowContract.Presenter mPresenter;
-
     private CoverFlowView<MyCoverFlowAdapter> mCoverFlowView;
     private MyCoverFlowAdapter mAdapter;
     private Button btnChangeImage;
-
-    @Override
-    public void setPresenter(CoverFlowContract.Presenter presenter) {
-        mPresenter = presenter;
-    }
 
     @Override
     protected int getContentId() {
@@ -99,5 +94,10 @@ public class CoverFlowFragment extends BaseFragment implements
     @Override
     public void onLongClick(int position) {
         AppContext.getInstance().logd(VIEW_LOG_TAG, "top image long clicked ==> " + position);
+    }
+
+    @Override
+    public CoverFlowPresenter createPresenter() {
+        return new CoverFlowPresenter(getActivity(), this);
     }
 }

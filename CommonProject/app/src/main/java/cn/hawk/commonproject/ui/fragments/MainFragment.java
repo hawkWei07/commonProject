@@ -8,8 +8,10 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import cn.hawk.commonlib.base.BaseFragment;
+import cn.hawk.commonlib.base.MVPFragment;
 import cn.hawk.commonproject.R;
 import cn.hawk.commonproject.contracts.MainContract;
+import cn.hawk.commonproject.presents.MainPresnter;
 import cn.hawk.commonproject.ui.activities.CardDisplayActivity;
 import cn.hawk.commonproject.ui.activities.CoverFlowActivity;
 import cn.hawk.commonproject.ui.activities.ImageHandleActivity;
@@ -19,9 +21,7 @@ import cn.hawk.commonproject.ui.activities.RecyclerViewActivity;
  * Created by kehaowei on 2017/2/22.
  */
 
-public class MainFragment extends BaseFragment implements MainContract.View, View.OnClickListener {
-    private MainContract.Presenter mPresenter;
-
+public class MainFragment extends MVPFragment<MainPresnter> implements MainContract.View, View.OnClickListener {
     private TextView tvOutPut;
     private Button btnGoImage;
     private Button btnGoRecycler;
@@ -69,10 +69,6 @@ public class MainFragment extends BaseFragment implements MainContract.View, Vie
         super.initView();
     }
 
-    @Override
-    public void setPresenter(MainContract.Presenter presenter) {
-        mPresenter = presenter;
-    }
 
     @Override
     public void onResume() {
@@ -119,5 +115,10 @@ public class MainFragment extends BaseFragment implements MainContract.View, Vie
                 goCoverFlow();
                 break;
         }
+    }
+
+    @Override
+    public MainPresnter createPresenter() {
+        return new MainPresnter(this);
     }
 }

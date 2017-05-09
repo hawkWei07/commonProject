@@ -11,8 +11,6 @@ import cn.hawk.commonproject.ui.fragments.MainFragment;
 
 public class MainActivity extends BaseActivity {
 
-    private MainPresnter mMainPresenter;
-
     private MainFragment mainFragment;
 
     @Override
@@ -33,7 +31,6 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initData() {
         super.initData();
-        mMainPresenter = new MainPresnter(mainFragment);
     }
 
     @Override

@@ -566,7 +566,7 @@ public class CoverFlowView<T extends CoverFlowAdapter> extends View {
         mChildTransformer.postScale(childHeightScale, childHeightScale);
 
         if ((offset - (int) offset) == 0.0f) {
-            LogUtils.getInstance().logd(VIEW_LOG_TAG, "offset=>" + offset + " scale=>" + childHeightScale);
+            LogUtils.getInstance().logi(VIEW_LOG_TAG, "offset=>" + offset + " scale=>" + childHeightScale);
         }
 
         // if actually child height is larger or smaller than original child
@@ -633,7 +633,7 @@ public class CoverFlowView<T extends CoverFlowAdapter> extends View {
         final float scale = (float) heightInView / wAndh[1];
         final int widthInView = (int) (wAndh[0] * scale);
 
-        LogUtils.getInstance().logd(VIEW_LOG_TAG, "height ==>" + heightInView + " width ==>"
+        LogUtils.getInstance().logi(VIEW_LOG_TAG, "height ==>" + heightInView + " width ==>"
                 + widthInView);
 
         mTouchRect.left = (mWidth >> 1) - (widthInView >> 1);
@@ -641,7 +641,7 @@ public class CoverFlowView<T extends CoverFlowAdapter> extends View {
         mTouchRect.right = mTouchRect.left + widthInView;
         mTouchRect.bottom = mTouchRect.top + heightInView;
 
-        LogUtils.getInstance().logd(VIEW_LOG_TAG, "rect==>" + mTouchRect);
+        LogUtils.getInstance().logi(VIEW_LOG_TAG, "rect==>" + mTouchRect);
 
         if (mCoverFlowListener != null) {
             mCoverFlowListener.imageOnTop(this, position, mTouchRect.left,
@@ -757,7 +757,7 @@ public class CoverFlowView<T extends CoverFlowAdapter> extends View {
 
             startAnimation(-speed);
         } else {
-            LogUtils.getInstance().logd(VIEW_LOG_TAG,
+            LogUtils.getInstance().logi(VIEW_LOG_TAG,
                     " touch ==>" + event.getX() + " , " + event.getY());
             if (mTouchRect != null) {
                 if (mTouchRect.contains(event.getX(), event.getY())
@@ -1059,7 +1059,7 @@ public class CoverFlowView<T extends CoverFlowAdapter> extends View {
             // Target ~5% of the available heap.
             int cacheSize = 1024 * 1024 * memClass / 21;
 
-            LogUtils.getInstance().loge(VIEW_LOG_TAG, "cacheSize == " + cacheSize);
+            LogUtils.getInstance().logw(VIEW_LOG_TAG, "cacheSize == " + cacheSize);
             return cacheSize;
         }
     }

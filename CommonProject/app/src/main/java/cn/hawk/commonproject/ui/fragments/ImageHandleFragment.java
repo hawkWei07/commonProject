@@ -7,16 +7,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import cn.hawk.commonlib.base.BaseFragment;
+import cn.hawk.commonlib.base.MVPFragment;
 import cn.hawk.commonlib.utils.ImageUtils;
 import cn.hawk.commonproject.R;
 import cn.hawk.commonproject.contracts.ImageHandleContract;
+import cn.hawk.commonproject.presents.ImageHandlePresenter;
 
 /**
  * Created by kehaowei on 2017/3/21.
  */
 
-public class ImageHandleFragment extends BaseFragment implements ImageHandleContract.View {
-    private ImageHandleContract.Presenter mPresenter;
+public class ImageHandleFragment extends MVPFragment<ImageHandlePresenter> implements ImageHandleContract.View {
 
     private ImageView ivTest;
     private int maxSize;
@@ -30,10 +31,6 @@ public class ImageHandleFragment extends BaseFragment implements ImageHandleCont
         return fragment;
     }
 
-    @Override
-    public void setPresenter(ImageHandleContract.Presenter presenter) {
-        mPresenter = presenter;
-    }
 
     @Override
     protected int getContentId() {
@@ -79,5 +76,10 @@ public class ImageHandleFragment extends BaseFragment implements ImageHandleCont
         ivTest.setLayoutParams(layoutParams);
         ivTest.setScaleType(ImageView.ScaleType.CENTER_CROP);
         ivTest.setImageBitmap(bitmap);
+    }
+
+    @Override
+    public ImageHandlePresenter createPresenter() {
+        return new ImageHandlePresenter(getActivity(), this);
     }
 }

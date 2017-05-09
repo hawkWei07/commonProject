@@ -12,7 +12,6 @@ import cn.hawk.commonproject.ui.fragments.RecyclerViewFragment;
  */
 
 public class RecyclerViewActivity extends BaseActivity {
-    private RecyclerViewPresenter mPresenter;
     private RecyclerViewFragment mFragment;
 
     @Override
@@ -33,7 +32,6 @@ public class RecyclerViewActivity extends BaseActivity {
     @Override
     protected void initData() {
         super.initData();
-        mPresenter = new RecyclerViewPresenter(this, mFragment);
     }
 
     @Override

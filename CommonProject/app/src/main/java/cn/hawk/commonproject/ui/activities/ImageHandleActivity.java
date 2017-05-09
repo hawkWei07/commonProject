@@ -12,8 +12,6 @@ import cn.hawk.commonproject.ui.fragments.ImageHandleFragment;
 
 public class ImageHandleActivity extends BaseActivity {
 
-    private ImageHandlePresenter mPresenter;
-
     private ImageHandleFragment mFragment;
 
     @Override
@@ -34,7 +32,6 @@ public class ImageHandleActivity extends BaseActivity {
     @Override
     protected void initData() {
         super.initData();
-        mPresenter = new ImageHandlePresenter(this, mFragment);
     }
 
     @Override
