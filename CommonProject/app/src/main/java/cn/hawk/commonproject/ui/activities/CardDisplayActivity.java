@@ -182,17 +182,12 @@ public class CardDisplayActivity extends MVPActivity<CardDisplayPresenter> imple
 
     @Override
     public void showPoetries(final ArrayList<PoetryItemBean> infos) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                if (null == mAdapter) {
-                    mAdapter = new PoetryListAdapter(CardDisplayActivity.this, infos);
-                    mAdapter.setmListener(CardDisplayActivity.this);
-                } else {
-                    mAdapter.refresh(infos);
-                }
-            }
-        });
+        if (null == mAdapter) {
+            mAdapter = new PoetryListAdapter(CardDisplayActivity.this, infos);
+            mAdapter.setmListener(CardDisplayActivity.this);
+        } else {
+            mAdapter.refresh(infos);
+        }
     }
 
     @Override
