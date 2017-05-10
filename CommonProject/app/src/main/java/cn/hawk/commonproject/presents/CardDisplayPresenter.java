@@ -5,6 +5,7 @@ import android.os.SystemClock;
 import android.text.TextUtils;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.concurrent.Callable;
 
 import cn.hawk.commonlib.base.CommonPresenter;
@@ -132,9 +133,10 @@ public class CardDisplayPresenter extends CommonPresenter implements CardDisplay
                     result = "Poetry list is null";
                 else {
                     ArrayList<PoetryItemBean> infos = body.getPoetries();
-                    if (null != infos && infos.size() > 0)
+                    if (null != infos && infos.size() > 0) {
+                        Collections.shuffle(infos);
                         CardDisplayPresenter.this.infos = infos;
-                    else
+                    } else
                         result = "Poetry list is empty";
                 }
                 return Observable.just(result);
