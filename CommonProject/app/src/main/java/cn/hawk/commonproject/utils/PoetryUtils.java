@@ -7,8 +7,12 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.util.List;
 
+import cn.hawk.commonlib.utils.LogUtils;
 import cn.hawk.commonlib.utils.StringUtils;
+import cn.hawk.commonproject.AppContext;
+import cn.hawk.commonproject.db.PoetryItemDao;
 import cn.hawk.commonproject.models.BaseJsonBean;
 import cn.hawk.commonproject.models.PoetriesListBean;
 import cn.hawk.commonproject.models.PoetryItemBean;
@@ -22,7 +26,17 @@ public class PoetryUtils {
     public static final String POETRIES_ASSETS_NAME = "poetrydata.txt";
 
     public static PoetriesListBean getAllPoetries(Context context) {
-        return getDefaultPoetries(context);
+        PoetryItemDao dao = new PoetryItemDao(context);
+        List<PoetryItemBean> list = dao.getAll();
+        if (null == list || list.size() == 0) {
+            AppContext.getInstance().logd("UTIL", "get from asset");
+            return getDefaultPoetries(context);
+        } else {
+            AppContext.getInstance().logd("DB", "get from db");
+            PoetriesListBean result = new PoetriesListBean();
+            result.setPoetries(list);
+            return result;
+        }
     }
 
     private static PoetriesListBean getDefaultPoetries(Context context) {
@@ -34,13 +48,26 @@ public class PoetryUtils {
         Type poetryType = new TypeToken<BaseJsonBean<PoetriesListBean>>() {
         }.getType();
         body = gson.fromJson(res, poetryType);
-        return body.getData();
+        PoetriesListBean bean = body.getData();
+        AppContext.getInstance().logd("UTIL", "get default : " + bean + " | " + bean.getPoetries().size());
+        if (null != bean && bean.getPoetries().size() > 0) {
+            PoetryItemDao dao = new PoetryItemDao(context);
+            dao.saveAll(bean.getPoetries());
+        }
+        return bean;
     }
 
     public static PoetryItemBean getPoetryById(Context context, int id) {
+        PoetryItemDao dao = new PoetryItemDao(context);
+        PoetryItemBean item = dao.getPoetryById(id);
+        if (null != item) {
+            AppContext.getInstance().logd("DB", "get poetry by id from db");
+            return item;
+        }
         PoetriesListBean body = getDefaultPoetries(context);
         if (null == body)
             return null;
+        AppContext.getInstance().logd("UTIL", "get poetry by id from asset");
         return body.getPoetryById(id);
     }
 

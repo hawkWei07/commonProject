@@ -1,16 +1,27 @@
 package cn.hawk.commonproject.models;
 
+import com.j256.ormlite.field.DatabaseField;
+
 /**
  * Created by kehaowei on 2017/4/11.
  */
 
 public class PoetryItemBean {
+    @DatabaseField(generatedId = true)
     int id;
+    @DatabaseField
     String title;
+    @DatabaseField
     int type;
+    @DatabaseField
     String time;
+    @DatabaseField
     String author;
+    @DatabaseField
     String content;
+
+    public PoetryItemBean() {
+    }
 
     public int getId() {
         return id;
