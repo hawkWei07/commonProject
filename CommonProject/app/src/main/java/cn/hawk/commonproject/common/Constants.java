@@ -13,4 +13,6 @@ public class Constants {
     public static String EXTRA_KEY_TITLE = "title";
     public static String EXTRA_KEY_AUTHOR = "author";
     public static String EXTRA_KEY_TIME = "time";
+    public static String EXTRA_KEY_FORCE_SHOW = "force_show";
+    public static String EXTRA_KEY_FORCE_HIDE = "force_hide";
 }

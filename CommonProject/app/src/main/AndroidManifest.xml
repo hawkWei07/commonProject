@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cn.hawk.commonproject">
 
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
     <application
         android:name=".AppContext"
         android:allowBackup="true"
@@ -30,6 +32,8 @@
             android:name=".ui.activities.PoetryDetailActivity"
             android:theme="@style/PoetryDetailTheme" />
         <!-- Material design end -->
+
+        <service android:name=".services.FloatWindowService" />
 
     </application>
 
