@@ -2,23 +2,17 @@ package cn.hawk.commonproject.ui.fragments;
 
 import android.Manifest;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import cn.hawk.commonlib.base.MVPFragment;
 import cn.hawk.commonlib.utils.PermissionUtils;
-import cn.hawk.commonproject.AppContext;
 import cn.hawk.commonproject.R;
 import cn.hawk.commonproject.common.Constants;
 import cn.hawk.commonproject.contracts.MainContract;
@@ -35,12 +29,18 @@ import cn.hawk.commonproject.ui.activities.RecyclerViewActivity;
  */
 
 public class MainFragment extends MVPFragment<MainPresnter> implements MainContract.View, View.OnClickListener {
+    @BindView(R.id.output)
+    TextView output;
+    @BindView(R.id.go_image)
+    Button goImage;
+    @BindView(R.id.go_recycler_view)
+    Button goRecyclerView;
+    @BindView(R.id.go_card_display)
+    Button goCardDisplay;
+    @BindView(R.id.go_cover_flow)
+    Button goCoverFlow;
+    @BindView(R.id.btn_float_window)
     Button btnFloatWindow;
-    private TextView tvOutPut;
-    private Button btnGoImage;
-    private Button btnGoRecycler;
-    private Button btnGoCardDisplay;
-    private Button btnGoCoverFlow;
 
     public static MainFragment newInstance() {
         Bundle args = new Bundle();
@@ -57,12 +57,6 @@ public class MainFragment extends MVPFragment<MainPresnter> implements MainContr
     @Override
     protected void bindView() {
         super.bindView();
-        tvOutPut = (TextView) getView().findViewById(R.id.output);
-        btnGoImage = (Button) getView().findViewById(R.id.go_image);
-        btnGoRecycler = (Button) getView().findViewById(R.id.go_recycler_view);
-        btnGoCardDisplay = (Button) getView().findViewById(R.id.go_card_display);
-        btnGoCoverFlow = (Button) getView().findViewById(R.id.go_cover_flow);
-        btnFloatWindow = (Button) getView().findViewById(R.id.btn_float_window);
     }
 
     @Override
@@ -73,10 +67,10 @@ public class MainFragment extends MVPFragment<MainPresnter> implements MainContr
     @Override
     protected void initEvent() {
         super.initEvent();
-        btnGoImage.setOnClickListener(this);
-        btnGoRecycler.setOnClickListener(this);
-        btnGoCardDisplay.setOnClickListener(this);
-        btnGoCoverFlow.setOnClickListener(this);
+        goImage.setOnClickListener(this);
+        goRecyclerView.setOnClickListener(this);
+        goCardDisplay.setOnClickListener(this);
+        goCoverFlow.setOnClickListener(this);
         btnFloatWindow.setOnClickListener(this);
     }
 
@@ -96,7 +90,7 @@ public class MainFragment extends MVPFragment<MainPresnter> implements MainContr
     public void showOutput(String output) {
         if (TextUtils.isEmpty(output))
             return;
-        tvOutPut.setText(output);
+        this.output.setText(output);
     }
 
     private void goImageHandle() {
@@ -173,4 +167,5 @@ public class MainFragment extends MVPFragment<MainPresnter> implements MainContr
     public MainPresnter createPresenter() {
         return new MainPresnter(this);
     }
+
 }

@@ -8,8 +8,8 @@ import android.util.Log;
 
 public class LogUtils {
     public static final int LOG_LEVEL_VIEW = 0;
-    public static final int LOG_LEVEL_INFO = 1;
-    public static final int LOG_LEVEL_DEBUG = 2;
+    public static final int LOG_LEVEL_DEBUG = 1;
+    public static final int LOG_LEVEL_INFO = 2;
     public static final int LOG_LEVEL_WARNNING = 3;
     public static final int LOG_LEVEL_ERROR = 4;
 

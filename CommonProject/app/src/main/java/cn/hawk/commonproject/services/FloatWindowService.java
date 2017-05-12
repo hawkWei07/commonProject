@@ -87,7 +87,6 @@ public class FloatWindowService extends Service implements View.OnTouchListener,
     }
 
     private void showFloatWindow() {
-        AppContext.getInstance().logd(TAG, "try to show float window");
         isShown = true;
         try {
             windowManager.addView(floatWindowView, layoutParams);
@@ -98,7 +97,6 @@ public class FloatWindowService extends Service implements View.OnTouchListener,
     }
 
     private void hideFloatWindow() {
-        AppContext.getInstance().logd(TAG, "try to hide float window");
         isShown = false;
         if (null != windowManager && null != floatWindowView) {
             try {
