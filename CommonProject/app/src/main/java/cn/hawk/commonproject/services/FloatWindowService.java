@@ -4,13 +4,20 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.PixelFormat;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
 import android.view.View;
 import android.view.WindowManager;
+
+import java.io.IOException;
 
 import cn.hawk.commonproject.AppContext;
 import cn.hawk.commonproject.R;
@@ -20,7 +27,7 @@ import cn.hawk.commonproject.common.Constants;
  * Created by kehaowei on 2017/5/12.
  */
 
-public class FloatWindowService extends Service implements View.OnTouchListener, View.OnClickListener {
+public class FloatWindowService extends Service implements View.OnTouchListener, View.OnClickListener, SurfaceHolder.Callback, MediaPlayer.OnCompletionListener {
     private static final String TAG = FloatWindowService.class.getSimpleName();
     Context context;
 
@@ -30,6 +37,10 @@ public class FloatWindowService extends Service implements View.OnTouchListener,
 
     private WindowManager windowManager;
     private WindowManager.LayoutParams layoutParams;
+
+    private SurfaceView surfaceView;
+    private SurfaceHolder holder;
+    private MediaPlayer mediaPlayer;
 
     private static final int MIN_DELTA = 5;
 
@@ -61,6 +72,11 @@ public class FloatWindowService extends Service implements View.OnTouchListener,
     public void onDestroy() {
         super.onDestroy();
         hideFloatWindow();
+        if (null != mediaPlayer) {
+            mediaPlayer.stop();
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
     }
 
     @Nullable
@@ -71,6 +87,7 @@ public class FloatWindowService extends Service implements View.OnTouchListener,
 
     private void init() {
         windowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
+        initMedia();
         floatWindowView = LayoutInflater.from(context).inflate(R.layout.view_float_window, null);
         layoutParams = new WindowManager.LayoutParams();
         layoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
@@ -84,6 +101,14 @@ public class FloatWindowService extends Service implements View.OnTouchListener,
         isShown = false;
         floatWindowView.setOnTouchListener(this);
         floatWindowView.findViewById(R.id.btn_exit).setOnClickListener(this);
+        surfaceView = (SurfaceView) floatWindowView.findViewById(R.id.surface_view);
+        holder = surfaceView.getHolder();
+        holder.addCallback(this);
+    }
+
+    private void initMedia() {
+        mediaPlayer = MediaPlayer.create(context, R.raw.test);
+        mediaPlayer.setOnCompletionListener(this);
     }
 
     private void showFloatWindow() {
@@ -156,5 +181,42 @@ public class FloatWindowService extends Service implements View.OnTouchListener,
                 hideFloatWindow();
                 break;
         }
+    }
+
+    @Override
+    public void surfaceCreated(SurfaceHolder surfaceHolder) {
+        AppContext.getInstance().logd(TAG, "surfaceCreated");
+        try {
+            if (null == mediaPlayer) {
+                initMedia();
+            }
+            mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+            mediaPlayer.setDisplay(holder);
+            mediaPlayer.start();
+        } catch (Exception e) {
+            AppContext.getInstance().loge(TAG, e.getLocalizedMessage());
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void surfaceChanged(SurfaceHolder surfaceHolder, int i, int i1, int i2) {
+
+    }
+
+    @Override
+    public void surfaceDestroyed(SurfaceHolder surfaceHolder) {
+        AppContext.getInstance().logd(TAG, "SurfaceDestroyed");
+        if (null != mediaPlayer) {
+            mediaPlayer.stop();
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
+    }
+
+    @Override
+    public void onCompletion(MediaPlayer mediaPlayer) {
+        mediaPlayer.seekTo(0);
+        mediaPlayer.start();
     }
 }
