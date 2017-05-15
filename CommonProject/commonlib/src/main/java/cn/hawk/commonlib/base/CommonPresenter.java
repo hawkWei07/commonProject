@@ -1,16 +1,16 @@
 package cn.hawk.commonlib.base;
 
-import io.reactivex.disposables.CompositeDisposable;
+import rx.subscriptions.CompositeSubscription;
 
 /**
  * Created by kehaowei on 2017/5/9.
  */
 
 public class CommonPresenter {
-    protected CompositeDisposable disposable;
+    protected CompositeSubscription disposable;
 
     public void attachView() {
-        disposable = new CompositeDisposable();
+        disposable = new CompositeSubscription();
     }
 
     public void detachView() {
