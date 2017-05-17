@@ -3,4 +3,6 @@
     <dimen name="img_min_height">71dp</dimen>
     <dimen name="img_min_width">101dp</dimen>
     <dimen name="img_max_size">155dp</dimen>
+
+    <dimen name="star_menu_radius_default">100dp</dimen>
 </resources>

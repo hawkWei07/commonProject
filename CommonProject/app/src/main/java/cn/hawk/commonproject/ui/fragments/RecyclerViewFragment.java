@@ -15,6 +15,8 @@ import cn.hawk.commonlib.base.BaseFragment;
 import cn.hawk.commonlib.base.MVPFragment;
 import cn.hawk.commonlib.interfaces.OnItemClickListener;
 import cn.hawk.commonlib.utils.DividerGridItemDecoration;
+import cn.hawk.commonlib.widgets.StarMenu;
+import cn.hawk.commonproject.AppContext;
 import cn.hawk.commonproject.R;
 import cn.hawk.commonproject.adapters.SimpleStringArrayAdapter;
 import cn.hawk.commonproject.adapters.StaggeredHomeAdapter;
@@ -28,8 +30,9 @@ import cn.hawk.commonproject.presents.RecyclerViewPresenter;
 public class RecyclerViewFragment extends MVPFragment<RecyclerViewPresenter> implements RecyclerViewContract.View, OnItemClickListener {
 
     private RecyclerView mRecyclerView;
-    /*private SimpleStringArrayAdapter mAdapter;*/
     private StaggeredHomeAdapter mAdapter;
+
+    private StarMenu starMenu;
 
     public static RecyclerViewFragment newInstance() {
         Bundle args = new Bundle();
@@ -42,6 +45,7 @@ public class RecyclerViewFragment extends MVPFragment<RecyclerViewPresenter> imp
     protected void bindView() {
         super.bindView();
         mRecyclerView = (RecyclerView) getView().findViewById(R.id.rv_list);
+        starMenu = (StarMenu) getView().findViewById(R.id.star_menu);
     }
 
     @Override
@@ -58,6 +62,14 @@ public class RecyclerViewFragment extends MVPFragment<RecyclerViewPresenter> imp
     @Override
     protected void initEvent() {
         super.initEvent();
+        if (null != starMenu) {
+            starMenu.setMenuItemClickListener(new StarMenu.OnMenuItemClickListener() {
+                @Override
+                public void onClick(View view, int pos) {
+                    AppContext.getInstance().logi("Hawk", "view : " + view + " on clicked in position : " + pos);
+                }
+            });
+        }
     }
 
     @Override

@@ -14,4 +14,18 @@
             <enum name="wrap_content" value="1" />
         </attr>
     </declare-styleable>
+    <declare-styleable name="StarMenu">
+        <attr name="radius" format="dimension" />
+        <attr name="position" format="enum">
+            <enum name="left_top" value="0" />
+            <enum name="left_center" value="1" />
+            <enum name="left_bottom" value="2" />
+            <enum name="right_top" value="3" />
+            <enum name="right_center" value="4" />
+            <enum name="right_bottom" value="5" />
+            <enum name="top" value="6" />
+            <enum name="bottom" value="7" />
+        </attr>
+        <attr name="duration" format="integer" />
+    </declare-styleable>
 </resources>

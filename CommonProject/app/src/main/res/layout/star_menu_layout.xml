@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cn.hawk.commonlib.widgets.StarMenu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:duration="1000"
+    app:position="bottom"
+    app:radius="150dp">
+
+
+    <ImageView
+        android:id="@+id/menu_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icon_author" />
+
+
+    <ImageView
+        android:id="@+id/menu_a"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icon_author"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/menu_b"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icon_type"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/menu_c"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icon_time"
+        android:visibility="gone" />
+
+</cn.hawk.commonlib.widgets.StarMenu>
