@@ -245,7 +245,7 @@ public class StarMenu extends ViewGroup implements View.OnClickListener {
         changeStatus();
     }
 
-    private void changeStatus() {
+    protected void changeStatus() {
         mStatus = mStatus == Status.CLOSE ? Status.OPEN : Status.CLOSE;
     }
 
