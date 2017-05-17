@@ -21,10 +21,10 @@ import cn.hawk.commonlib.R;
 public class StarMenu extends ViewGroup implements View.OnClickListener {
     private static final String TAG = "StarMenu";
     private OnMenuItemClickListener menuItemClickListener;
-    private Position mPosition = Position.RIGHT_BOTTOM;
+    protected Position mPosition = Position.RIGHT_BOTTOM;
 
-    private int mRadius;
-    private int mDuration;
+    protected int mRadius;
+    protected int mDuration;
 
     private View mCenterView;
 
