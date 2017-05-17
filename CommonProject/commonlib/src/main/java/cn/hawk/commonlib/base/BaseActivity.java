@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import cn.hawk.commonlib.widgets.LoadingDialog;
 
 /**
  * Created by kehaowei on 2017/2/22.
@@ -23,6 +24,23 @@ public abstract class BaseActivity extends AppCompatActivity {
         initData();
         initView();
         initEvent();
+    }
+
+    private LoadingDialog mLoadingDialog;
+
+    public void showLoading() {
+        if (mLoadingDialog == null) {
+            mLoadingDialog = new LoadingDialog(this);
+        }
+        if (!mLoadingDialog.isShowing()) {
+            mLoadingDialog.show();
+        }
+    }
+
+    public void dismissLoading() {
+        if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
+            mLoadingDialog.dismiss();
+        }
     }
 
     protected abstract int getContentId();

@@ -55,4 +55,12 @@ public abstract class BaseFragment extends Fragment {
     protected void initEvent() {
     }
 
+    public void showLoading() {
+        ((BaseActivity) getActivity()).showLoading();
+    }
+
+    public void dismissLoading() {
+        ((BaseActivity) getActivity()).dismissLoading();
+    }
+
 }
