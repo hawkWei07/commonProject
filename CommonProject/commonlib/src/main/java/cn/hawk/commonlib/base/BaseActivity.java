@@ -18,6 +18,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initWindow();
         setContentView(getContentId());
         unbinder = ButterKnife.bind(this);
         bindView();
@@ -41,6 +42,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
             mLoadingDialog.dismiss();
         }
+    }
+
+    protected void initWindow() {
     }
 
     protected abstract int getContentId();
