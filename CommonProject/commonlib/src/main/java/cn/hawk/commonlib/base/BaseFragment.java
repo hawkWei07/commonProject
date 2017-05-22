@@ -64,7 +64,7 @@ public abstract class BaseFragment extends Fragment {
         ((BaseActivity) getActivity()).dismissLoading();
     }
 
-    private void showToast(String msg) {
+    protected void showToast(String msg) {
         Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
     }
 
