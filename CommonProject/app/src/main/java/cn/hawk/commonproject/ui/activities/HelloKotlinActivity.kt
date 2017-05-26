@@ -1,6 +1,9 @@
 package cn.hawk.commonproject.ui.activities
 
+import android.content.Context
 import android.content.Intent
+import android.os.Bundle
+import android.widget.Toast
 import cn.hawk.commonlib.base.KMVPActivity
 import cn.hawk.commonproject.R
 import cn.hawk.commonproject.contracts.HelloKotlinActivityContract
@@ -11,6 +14,12 @@ import kotlinx.android.synthetic.main.activity_hello_kotlin.*
  * Created by kehaowei on 2017/5/25.
  */
 class HelloKotlinActivity : KMVPActivity<HelloKotlinActivityPresenter>(), HelloKotlinActivityContract.View {
+    var mContext: Context? = null;
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        mContext = this
+    }
+
     override fun getContentId(): Int {
         return R.layout.activity_hello_kotlin
     }
@@ -35,6 +44,7 @@ class HelloKotlinActivity : KMVPActivity<HelloKotlinActivityPresenter>(), HelloK
     override fun initEvent() {
         super.initEvent()
         btn_back.setOnClickListener {
+            Toast.makeText(mContext, "ddd", Toast.LENGTH_SHORT).show()
             goMain()
         }
     }
