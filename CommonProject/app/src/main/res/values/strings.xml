@@ -27,5 +27,6 @@
     <string name="alert_data_deleted">数据已删除</string>
     <string name="alert_data_restored">数据已恢复</string>
     <string name="alert_poetry_not_exists">诗歌不存在</string>
+    <string name="go_kotlin">go kotlin</string>
     <!-- Alert strings end -->
 </resources>

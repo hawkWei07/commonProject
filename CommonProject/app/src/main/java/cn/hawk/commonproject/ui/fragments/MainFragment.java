@@ -6,11 +6,15 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import cn.hawk.commonlib.base.MVPFragment;
 import cn.hawk.commonlib.utils.PermissionUtils;
 import cn.hawk.commonproject.R;
@@ -20,6 +24,7 @@ import cn.hawk.commonproject.presents.MainPresnter;
 import cn.hawk.commonproject.services.FloatWindowService;
 import cn.hawk.commonproject.ui.activities.CardDisplayActivity;
 import cn.hawk.commonproject.ui.activities.CoverFlowActivity;
+import cn.hawk.commonproject.ui.activities.HelloKotlinActivity;
 import cn.hawk.commonproject.ui.activities.ImageHandleActivity;
 import cn.hawk.commonproject.ui.activities.MainActivity;
 import cn.hawk.commonproject.ui.activities.RecyclerViewActivity;
@@ -41,6 +46,8 @@ public class MainFragment extends MVPFragment<MainPresnter> implements MainContr
     Button goCoverFlow;
     @BindView(R.id.btn_float_window)
     Button btnFloatWindow;
+    @BindView(R.id.go_kotlin)
+    Button goKotlin;
 
     public static MainFragment newInstance() {
         Bundle args = new Bundle();
@@ -72,6 +79,7 @@ public class MainFragment extends MVPFragment<MainPresnter> implements MainContr
         goCardDisplay.setOnClickListener(this);
         goCoverFlow.setOnClickListener(this);
         btnFloatWindow.setOnClickListener(this);
+        goKotlin.setOnClickListener(this);
     }
 
     @Override
@@ -131,6 +139,9 @@ public class MainFragment extends MVPFragment<MainPresnter> implements MainContr
             case R.id.btn_float_window:
                 goFlowWindow(false, false);
                 break;
+            case R.id.go_kotlin:
+                goKotlin();
+                break;
         }
     }
 
@@ -157,6 +168,11 @@ public class MainFragment extends MVPFragment<MainPresnter> implements MainContr
             return true;
     }
 
+    private void goKotlin() {
+        startActivity(new Intent(getActivity(), HelloKotlinActivity.class));
+        getActivity().finish();
+    }
+
     public void showFloatWindow(boolean forceHide, boolean forceShow) {
         getActivity().startService(new Intent(getActivity(), FloatWindowService.class)
                 .putExtra(Constants.EXTRA_KEY_FORCE_HIDE, forceHide)
@@ -167,5 +183,4 @@ public class MainFragment extends MVPFragment<MainPresnter> implements MainContr
     public MainPresnter createPresenter() {
         return new MainPresnter(this);
     }
-
 }

@@ -52,6 +52,12 @@
                 android:layout_height="wrap_content"
                 android:text="@string/str_float_window" />
 
+            <Button
+                android:id="@+id/go_kotlin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/go_kotlin" />
+
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

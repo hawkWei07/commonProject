@@ -1,5 +1,8 @@
 package cn.hawk.commonproject;
 
+import android.content.Context;
+import android.support.multidex.MultiDex;
+
 import cn.hawk.commonlib.base.BaseApplication;
 import cn.hawk.commonlib.utils.LogUtils;
 
@@ -18,6 +21,12 @@ public class AppContext extends BaseApplication {
 
     public static AppContext getInstance() {
         return instance;
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
     }
 
     @Override
