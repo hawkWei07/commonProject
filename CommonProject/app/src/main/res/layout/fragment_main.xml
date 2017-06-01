@@ -52,6 +52,12 @@
                 android:layout_height="wrap_content"
                 android:text="@string/str_float_window" />
 
+            <Button
+                android:id="@+id/btn_flipper_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/str_flipper_view" />
+
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

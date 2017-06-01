@@ -23,6 +23,7 @@ import cn.hawk.commonproject.ui.activities.CoverFlowActivity;
 import cn.hawk.commonproject.ui.activities.ImageHandleActivity;
 import cn.hawk.commonproject.ui.activities.MainActivity;
 import cn.hawk.commonproject.ui.activities.RecyclerViewActivity;
+import cn.hawk.commonproject.ui.activities.ViewFlipperActivity;
 
 /**
  * Created by kehaowei on 2017/2/22.
@@ -41,6 +42,8 @@ public class MainFragment extends MVPFragment<MainPresnter> implements MainContr
     Button goCoverFlow;
     @BindView(R.id.btn_float_window)
     Button btnFloatWindow;
+    @BindView(R.id.btn_flipper_view)
+    Button btnFlipperView;
 
     public static MainFragment newInstance() {
         Bundle args = new Bundle();
@@ -72,6 +75,7 @@ public class MainFragment extends MVPFragment<MainPresnter> implements MainContr
         goCardDisplay.setOnClickListener(this);
         goCoverFlow.setOnClickListener(this);
         btnFloatWindow.setOnClickListener(this);
+        btnFlipperView.setOnClickListener(this);
     }
 
     @Override
@@ -131,6 +135,9 @@ public class MainFragment extends MVPFragment<MainPresnter> implements MainContr
             case R.id.btn_float_window:
                 goFlowWindow(false, false);
                 break;
+            case R.id.btn_flipper_view:
+                goFlipperView();
+                break;
         }
     }
 
@@ -140,6 +147,10 @@ public class MainFragment extends MVPFragment<MainPresnter> implements MainContr
         } /*else {
             requestOverdrawPermission();
         }*/
+    }
+
+    private void goFlipperView() {
+        startActivity(new Intent(getActivity(), ViewFlipperActivity.class));
     }
 
     private boolean checkFloatWindowPermission() {

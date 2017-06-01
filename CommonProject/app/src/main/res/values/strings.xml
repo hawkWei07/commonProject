@@ -6,6 +6,7 @@
     <string name="activity_label_poetry">诗词卡</string>
     <string name="activity_label_cover_flow">Cover flow</string>
     <string name="str_float_window">float window</string>
+    <string name="str_flipper_view">Flipper View</string>
 
     <string name="exit">退出</string>
 
