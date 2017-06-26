@@ -49,8 +49,8 @@ public class WriteQRCodeActivityPresenter extends CommonPresenter implements Wri
             mView.onCodeGenerateFailed("生成失败，输入位空");
         bitmap = null;
         disposable.add(generateBitmapObservable(content)
-                .observeOn(Schedulers.io())
-                .subscribeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<String>() {
                     @Override
                     public void onCompleted() {
