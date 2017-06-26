@@ -110,4 +110,13 @@ public class WriteQRCodeActivityPresenter extends CommonPresenter implements Wri
         AppContext.getInstance().logd(TAG, "generate end : " + bitmap);
         return resultStr;
     }
+
+    @Override
+    public void detachView() {
+        super.detachView();
+        if (null != bitmap && !bitmap.isRecycled()){
+            bitmap.recycle();
+            bitmap = null;
+        }
+    }
 }
