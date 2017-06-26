@@ -23,6 +23,7 @@
         <activity android:name=".ui.activities.RecyclerViewActivity" />
         <activity android:name=".ui.activities.CoverFlowActivity" />
         <activity android:name=".ui.activities.ViewFlipperActivity" />
+        <activity android:name=".ui.activities.WriteQRCodeActivity" />
 
         <!-- Material design begin -->
         <activity

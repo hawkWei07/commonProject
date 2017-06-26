@@ -6,11 +6,15 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import cn.hawk.commonlib.base.MVPFragment;
 import cn.hawk.commonlib.utils.PermissionUtils;
 import cn.hawk.commonproject.R;
@@ -24,6 +28,7 @@ import cn.hawk.commonproject.ui.activities.ImageHandleActivity;
 import cn.hawk.commonproject.ui.activities.MainActivity;
 import cn.hawk.commonproject.ui.activities.RecyclerViewActivity;
 import cn.hawk.commonproject.ui.activities.ViewFlipperActivity;
+import cn.hawk.commonproject.ui.activities.WriteQRCodeActivity;
 
 /**
  * Created by kehaowei on 2017/2/22.
@@ -44,6 +49,8 @@ public class MainFragment extends MVPFragment<MainPresnter> implements MainContr
     Button btnFloatWindow;
     @BindView(R.id.btn_flipper_view)
     Button btnFlipperView;
+    @BindView(R.id.btn_write_qrcode)
+    Button btnWriteQrcode;
 
     public static MainFragment newInstance() {
         Bundle args = new Bundle();
@@ -76,6 +83,7 @@ public class MainFragment extends MVPFragment<MainPresnter> implements MainContr
         goCoverFlow.setOnClickListener(this);
         btnFloatWindow.setOnClickListener(this);
         btnFlipperView.setOnClickListener(this);
+        btnWriteQrcode.setOnClickListener(this);
     }
 
     @Override
@@ -138,6 +146,9 @@ public class MainFragment extends MVPFragment<MainPresnter> implements MainContr
             case R.id.btn_flipper_view:
                 goFlipperView();
                 break;
+            case R.id.btn_write_qrcode:
+                goWriteQRCode();
+                break;
         }
     }
 
@@ -151,6 +162,10 @@ public class MainFragment extends MVPFragment<MainPresnter> implements MainContr
 
     private void goFlipperView() {
         startActivity(new Intent(getActivity(), ViewFlipperActivity.class));
+    }
+
+    private void goWriteQRCode() {
+        startActivity(new Intent(getActivity(), WriteQRCodeActivity.class));
     }
 
     private boolean checkFloatWindowPermission() {
