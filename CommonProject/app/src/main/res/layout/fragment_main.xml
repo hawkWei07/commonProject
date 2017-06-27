@@ -64,6 +64,12 @@
                 android:layout_height="wrap_content"
                 android:text="@string/btn_write_qrcode_str" />
 
+            <Button
+                android:id="@+id/btn_go_capture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_go_capture_str" />
+
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

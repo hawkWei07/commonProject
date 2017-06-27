@@ -4,6 +4,10 @@
 
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+
     <application
         android:name=".AppContext"
         android:allowBackup="true"
@@ -24,6 +28,7 @@
         <activity android:name=".ui.activities.CoverFlowActivity" />
         <activity android:name=".ui.activities.ViewFlipperActivity" />
         <activity android:name=".ui.activities.WriteQRCodeActivity" />
+        <activity android:name=".ui.activities.CaptureActivity" />
 
         <!-- Material design begin -->
         <activity

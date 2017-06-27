@@ -22,6 +22,7 @@ import cn.hawk.commonproject.common.Constants;
 import cn.hawk.commonproject.contracts.MainContract;
 import cn.hawk.commonproject.presents.MainPresnter;
 import cn.hawk.commonproject.services.FloatWindowService;
+import cn.hawk.commonproject.ui.activities.CaptureActivity;
 import cn.hawk.commonproject.ui.activities.CardDisplayActivity;
 import cn.hawk.commonproject.ui.activities.CoverFlowActivity;
 import cn.hawk.commonproject.ui.activities.ImageHandleActivity;
@@ -51,6 +52,8 @@ public class MainFragment extends MVPFragment<MainPresnter> implements MainContr
     Button btnFlipperView;
     @BindView(R.id.btn_write_qrcode)
     Button btnWriteQrcode;
+    @BindView(R.id.btn_go_capture)
+    Button btnGoCapture;
 
     public static MainFragment newInstance() {
         Bundle args = new Bundle();
@@ -84,6 +87,7 @@ public class MainFragment extends MVPFragment<MainPresnter> implements MainContr
         btnFloatWindow.setOnClickListener(this);
         btnFlipperView.setOnClickListener(this);
         btnWriteQrcode.setOnClickListener(this);
+        btnGoCapture.setOnClickListener(this);
     }
 
     @Override
@@ -149,6 +153,10 @@ public class MainFragment extends MVPFragment<MainPresnter> implements MainContr
             case R.id.btn_write_qrcode:
                 goWriteQRCode();
                 break;
+            case R.id.btn_go_capture:
+                if (checkCapturePermission())
+                    goCapture();
+                break;
         }
     }
 
@@ -168,12 +176,25 @@ public class MainFragment extends MVPFragment<MainPresnter> implements MainContr
         startActivity(new Intent(getActivity(), WriteQRCodeActivity.class));
     }
 
+    public void goCapture() {
+        startActivity(new Intent(getActivity(), CaptureActivity.class));
+    }
+
     private boolean checkFloatWindowPermission() {
         return PermissionUtils.checkPermission(
                 getActivity(),
                 new String[]{Manifest.permission.SYSTEM_ALERT_WINDOW},
                 getString(R.string.permission_float_window),
                 MainActivity.CODE_PERMISSION_FLOAT_WINDOW);
+    }
+
+    private boolean checkCapturePermission() {
+        return PermissionUtils.checkPermission(getActivity(),
+                new String[]{
+                        Manifest.permission.CAMERA
+                },
+                getString(R.string.permission_capture),
+                MainActivity.CODE_PERMISSION_CAPTURE);
     }
 
     private boolean checkOverdrawSettings() {

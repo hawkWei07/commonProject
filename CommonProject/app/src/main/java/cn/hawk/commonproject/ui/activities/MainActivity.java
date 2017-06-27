@@ -19,6 +19,7 @@ import cn.hawk.commonproject.ui.fragments.MainFragment;
 public class MainActivity extends BaseActivity {
 
     public static final int CODE_PERMISSION_FLOAT_WINDOW = 1;
+    public static final int CODE_PERMISSION_CAPTURE = 2;
 
     public static final int CODE_REQUEST_OVER_DRAW = 1;
 
@@ -66,19 +67,22 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode) {
-            case CODE_PERMISSION_FLOAT_WINDOW:
-                boolean failed = false;
-                for (int result : grantResults) {
-                    if (result == PackageManager.PERMISSION_DENIED) {
-                        failed = true;
-                        break;
-                    }
-                }
-                if (!failed && null != mainFragment) {
-                    /*mainFragment.showFloatWindow(false, false);*/
-                }
+        boolean failed = false;
+        for (int result : grantResults) {
+            if (result == PackageManager.PERMISSION_DENIED) {
+                failed = true;
                 break;
+            }
+        }
+        if (!failed && null != mainFragment) {
+            switch (requestCode) {
+                case CODE_PERMISSION_FLOAT_WINDOW:
+                              /*mainFragment.showFloatWindow(false, false);*/
+                    break;
+                case CODE_PERMISSION_CAPTURE:
+                    mainFragment.goCapture();
+                    break;
+            }
         }
     }
 

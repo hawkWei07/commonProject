@@ -29,5 +29,6 @@
     <string name="alert_data_restored">数据已恢复</string>
     <string name="alert_poetry_not_exists">诗歌不存在</string>
     <string name="btn_write_qrcode_str">生成二维码</string>
+    <string name="btn_go_capture_str">扫描二维码</string>
     <!-- Alert strings end -->
 </resources>
