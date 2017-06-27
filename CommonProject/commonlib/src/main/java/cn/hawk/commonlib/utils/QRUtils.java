@@ -31,7 +31,7 @@ public class QRUtils {
                 }
             }
             bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
-            bitmap.setPixels(pixels, 0, 100, 0, 0, w, h);
+            bitmap.setPixels(pixels, 0, w, 0, 0, w, h);
         } catch (Exception e) {
             e.printStackTrace();
         }
