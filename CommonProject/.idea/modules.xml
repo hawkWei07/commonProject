@@ -5,6 +5,8 @@
       <module fileurl="file://$PROJECT_DIR$/CommonProject.iml" filepath="$PROJECT_DIR$/CommonProject.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/commonlib/commonlib.iml" filepath="$PROJECT_DIR$/commonlib/commonlib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/interfacedef/interfacedef.iml" filepath="$PROJECT_DIR$/interfacedef/interfacedef.iml" />
+      <module fileurl="file://$PROJECT_DIR$/interfaceimpl/interfaceimpl.iml" filepath="$PROJECT_DIR$/interfaceimpl/interfaceimpl.iml" />
     </modules>
   </component>
 </project>

@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,7 @@ import cn.hawk.commonproject.services.FloatWindowService;
 import cn.hawk.commonproject.ui.activities.CaptureActivity;
 import cn.hawk.commonproject.ui.activities.CardDisplayActivity;
 import cn.hawk.commonproject.ui.activities.CoverFlowActivity;
+import cn.hawk.commonproject.ui.activities.HLActivity;
 import cn.hawk.commonproject.ui.activities.ImageHandleActivity;
 import cn.hawk.commonproject.ui.activities.MainActivity;
 import cn.hawk.commonproject.ui.activities.RecyclerViewActivity;
@@ -54,6 +56,8 @@ public class MainFragment extends MVPFragment<MainPresnter> implements MainContr
     Button btnWriteQrcode;
     @BindView(R.id.btn_go_capture)
     Button btnGoCapture;
+    @BindView(R.id.btn_go_hl)
+    Button btnGoHL;
 
     public static MainFragment newInstance() {
         Bundle args = new Bundle();
@@ -88,6 +92,7 @@ public class MainFragment extends MVPFragment<MainPresnter> implements MainContr
         btnFlipperView.setOnClickListener(this);
         btnWriteQrcode.setOnClickListener(this);
         btnGoCapture.setOnClickListener(this);
+        btnGoHL.setOnClickListener(this);
     }
 
     @Override
@@ -157,6 +162,10 @@ public class MainFragment extends MVPFragment<MainPresnter> implements MainContr
                 if (checkCapturePermission())
                     goCapture();
                 break;
+            case R.id.btn_go_hl:
+                if (checkSDCardPermission())
+                    goHardLoad();
+                break;
         }
     }
 
@@ -180,6 +189,11 @@ public class MainFragment extends MVPFragment<MainPresnter> implements MainContr
         startActivity(new Intent(getActivity(), CaptureActivity.class));
     }
 
+    public void goHardLoad() {
+        Log.d("Hawk", "goHardLoad");
+        startActivity(new Intent(getActivity(), HLActivity.class));
+    }
+
     private boolean checkFloatWindowPermission() {
         return PermissionUtils.checkPermission(
                 getActivity(),
@@ -195,6 +209,16 @@ public class MainFragment extends MVPFragment<MainPresnter> implements MainContr
                 },
                 getString(R.string.permission_capture),
                 MainActivity.CODE_PERMISSION_CAPTURE);
+    }
+
+    private boolean checkSDCardPermission() {
+        return PermissionUtils.checkPermission(getActivity(),
+                new String[]{
+                        Manifest.permission.READ_EXTERNAL_STORAGE,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE
+                },
+                getString(R.string.permission_sdcard),
+                MainActivity.CODE_PERMISSION_SDCARD);
     }
 
     private boolean checkOverdrawSettings() {

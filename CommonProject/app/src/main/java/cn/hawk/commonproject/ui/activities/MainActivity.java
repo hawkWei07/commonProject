@@ -20,6 +20,7 @@ public class MainActivity extends BaseActivity {
 
     public static final int CODE_PERMISSION_FLOAT_WINDOW = 1;
     public static final int CODE_PERMISSION_CAPTURE = 2;
+    public static final int CODE_PERMISSION_SDCARD = 3;
 
     public static final int CODE_REQUEST_OVER_DRAW = 1;
 
@@ -81,6 +82,9 @@ public class MainActivity extends BaseActivity {
                     break;
                 case CODE_PERMISSION_CAPTURE:
                     mainFragment.goCapture();
+                    break;
+                case CODE_PERMISSION_SDCARD:
+                    mainFragment.goHardLoad();
                     break;
             }
         }

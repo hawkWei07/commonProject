@@ -25,6 +25,26 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.config
         }
+        debug{
+            minifyEnabled false
+        }
+    }
+
+    flavorDimensions("color", "price")
+
+    productFlavors {
+        red {
+            flavorDimension "color"
+        }
+        blue {
+            flavorDimension "color"
+        }
+        free {
+            flavorDimension "price"
+        }
+        paid {
+            flavorDimension "price"
+        }
     }
 
     lintOptions {

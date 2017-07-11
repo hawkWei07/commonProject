@@ -2,4 +2,5 @@
 <resources>
     <string name="permission_float_window">是否允许应用弹出悬浮窗？</string>
     <string name="permission_capture">是否允许应用扫描二维码？</string>
+    <string name="permission_sdcard">是否允许应用读写SD卡？</string>
 </resources>
