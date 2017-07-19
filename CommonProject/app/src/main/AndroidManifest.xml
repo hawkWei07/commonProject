@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cn.hawk.commonproject">
 
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <uses-permission android:name="android.permission.CAMERA" />
@@ -32,6 +34,7 @@
         <activity android:name=".ui.activities.WriteQRCodeActivity" />
         <activity android:name=".ui.activities.CaptureActivity" />
         <activity android:name=".ui.activities.HLActivity" />
+        <activity android:name=".ui.activities.WifiInfoActivity" />
 
         <!-- Material design begin -->
         <activity

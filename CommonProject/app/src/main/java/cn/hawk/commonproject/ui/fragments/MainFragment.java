@@ -31,6 +31,7 @@ import cn.hawk.commonproject.ui.activities.ImageHandleActivity;
 import cn.hawk.commonproject.ui.activities.MainActivity;
 import cn.hawk.commonproject.ui.activities.RecyclerViewActivity;
 import cn.hawk.commonproject.ui.activities.ViewFlipperActivity;
+import cn.hawk.commonproject.ui.activities.WifiInfoActivity;
 import cn.hawk.commonproject.ui.activities.WriteQRCodeActivity;
 
 /**
@@ -58,6 +59,8 @@ public class MainFragment extends MVPFragment<MainPresnter> implements MainContr
     Button btnGoCapture;
     @BindView(R.id.btn_go_hl)
     Button btnGoHL;
+    @BindView(R.id.btn_go_wifi)
+    Button btnGoWifi;
 
     public static MainFragment newInstance() {
         Bundle args = new Bundle();
@@ -93,6 +96,7 @@ public class MainFragment extends MVPFragment<MainPresnter> implements MainContr
         btnWriteQrcode.setOnClickListener(this);
         btnGoCapture.setOnClickListener(this);
         btnGoHL.setOnClickListener(this);
+        btnGoWifi.setOnClickListener(this);
     }
 
     @Override
@@ -166,6 +170,9 @@ public class MainFragment extends MVPFragment<MainPresnter> implements MainContr
                 if (checkSDCardPermission())
                     goHardLoad();
                 break;
+            case R.id.btn_go_wifi:
+                goWifi();
+                break;
         }
     }
 
@@ -192,6 +199,10 @@ public class MainFragment extends MVPFragment<MainPresnter> implements MainContr
     public void goHardLoad() {
         Log.d("Hawk", "goHardLoad");
         startActivity(new Intent(getActivity(), HLActivity.class));
+    }
+
+    public void goWifi() {
+        startActivity(new Intent(getActivity(), WifiInfoActivity.class));
     }
 
     private boolean checkFloatWindowPermission() {
