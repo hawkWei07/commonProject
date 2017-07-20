@@ -27,60 +27,70 @@
                 android:id="@+id/go_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:text="@string/str_go_image" />
 
             <Button
                 android:id="@+id/go_recycler_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:text="@string/str_go_recycler" />
 
             <Button
                 android:id="@+id/go_card_display"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:text="@string/activity_label_poetry" />
 
             <Button
                 android:id="@+id/go_cover_flow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:text="@string/activity_label_cover_flow" />
 
             <Button
                 android:id="@+id/btn_float_window"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:text="@string/str_float_window" />
 
             <Button
                 android:id="@+id/btn_flipper_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:text="@string/str_flipper_view" />
 
             <Button
                 android:id="@+id/btn_write_qrcode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:text="@string/btn_write_qrcode_str" />
 
             <Button
                 android:id="@+id/btn_go_capture"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:text="@string/btn_go_capture_str" />
 
             <Button
                 android:id="@+id/btn_go_hl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:text="@string/go_hl_str" />
 
             <Button
                 android:id="@+id/btn_go_wifi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:text="wifi"
                 tools:ignore="HardcodedText" />
 

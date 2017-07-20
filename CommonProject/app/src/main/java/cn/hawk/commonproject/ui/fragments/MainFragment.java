@@ -139,19 +139,19 @@ public class MainFragment extends MVPFragment<MainPresnter> implements MainContr
         switch (view.getId()) {
             case R.id.go_image:
                 goImageHandle();
-                goFlowWindow(false, true);
+//                goFlowWindow(false, true);
                 break;
             case R.id.go_recycler_view:
                 goRecyclerView();
-                goFlowWindow(false, true);
+//                goFlowWindow(false, true);
                 break;
             case R.id.go_card_display:
                 goCardDisplay();
-                goFlowWindow(false, true);
+//                goFlowWindow(false, true);
                 break;
             case R.id.go_cover_flow:
                 goCoverFlow();
-                goFlowWindow(false, true);
+//                goFlowWindow(false, true);
                 break;
             case R.id.btn_float_window:
                 goFlowWindow(false, false);
