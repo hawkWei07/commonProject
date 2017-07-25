@@ -19,6 +19,7 @@ public class ApiSubscriber<T> extends Subscriber<ResponseBean<T>> {
         super.onStart();
         if (null == apiCallBack)
             return;
+        apiCallBack.onStart();
     }
 
     @Override
