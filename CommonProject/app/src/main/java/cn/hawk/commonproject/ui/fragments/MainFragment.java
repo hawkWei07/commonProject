@@ -14,8 +14,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import cn.hawk.commonlib.base.MVPFragment;
 import cn.hawk.commonlib.utils.PermissionUtils;
 import cn.hawk.commonproject.R;
@@ -30,6 +28,7 @@ import cn.hawk.commonproject.ui.activities.HLActivity;
 import cn.hawk.commonproject.ui.activities.ImageHandleActivity;
 import cn.hawk.commonproject.ui.activities.MainActivity;
 import cn.hawk.commonproject.ui.activities.RecyclerViewActivity;
+import cn.hawk.commonproject.ui.activities.SchedulerActivity;
 import cn.hawk.commonproject.ui.activities.ViewFlipperActivity;
 import cn.hawk.commonproject.ui.activities.WifiInfoActivity;
 import cn.hawk.commonproject.ui.activities.WriteQRCodeActivity;
@@ -61,6 +60,8 @@ public class MainFragment extends MVPFragment<MainPresnter> implements MainContr
     Button btnGoHL;
     @BindView(R.id.btn_go_wifi)
     Button btnGoWifi;
+    @BindView(R.id.btn_start_scheduler)
+    Button btnStartScheduler;
 
     public static MainFragment newInstance() {
         Bundle args = new Bundle();
@@ -97,6 +98,7 @@ public class MainFragment extends MVPFragment<MainPresnter> implements MainContr
         btnGoCapture.setOnClickListener(this);
         btnGoHL.setOnClickListener(this);
         btnGoWifi.setOnClickListener(this);
+        btnStartScheduler.setOnClickListener(this);
     }
 
     @Override
@@ -173,6 +175,9 @@ public class MainFragment extends MVPFragment<MainPresnter> implements MainContr
             case R.id.btn_go_wifi:
                 goWifi();
                 break;
+            case R.id.btn_start_scheduler:
+                goScheduler();
+                break;
         }
     }
 
@@ -203,6 +208,10 @@ public class MainFragment extends MVPFragment<MainPresnter> implements MainContr
 
     public void goWifi() {
         startActivity(new Intent(getActivity(), WifiInfoActivity.class));
+    }
+
+    public void goScheduler() {
+        startActivity(new Intent(getActivity(), SchedulerActivity.class));
     }
 
     private boolean checkFloatWindowPermission() {

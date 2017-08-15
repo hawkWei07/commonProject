@@ -35,6 +35,7 @@
         <activity android:name=".ui.activities.CaptureActivity" />
         <activity android:name=".ui.activities.HLActivity" />
         <activity android:name=".ui.activities.WifiInfoActivity" />
+        <activity android:name=".ui.activities.SchedulerActivity" />
 
         <!-- Material design begin -->
         <activity
@@ -47,6 +48,11 @@
         <!-- Material design end -->
 
         <service android:name=".services.FloatWindowService" />
+
+        <service
+            android:name=".services.SampleJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
 
     </application>
 

@@ -94,6 +94,14 @@
                 android:text="wifi"
                 tools:ignore="HardcodedText" />
 
+            <Button
+                android:id="@+id/btn_start_scheduler"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Scheduler"
+                tools:ignore="HardcodedText" />
+
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>
