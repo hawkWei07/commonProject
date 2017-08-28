@@ -1,5 +1,11 @@
 package cn.hawk.commonproject;
 
+import android.content.Context;
+import android.support.multidex.MultiDex;
+
+import com.tencent.bugly.Bugly;
+import com.tencent.bugly.beta.Beta;
+
 import cn.hawk.commonlib.base.BaseApplication;
 import cn.hawk.commonlib.utils.LogUtils;
 
@@ -14,6 +20,14 @@ public class AppContext extends BaseApplication {
     public void onCreate() {
         super.onCreate();
         instance = this;
+        Bugly.init(this, "e047d34325", true);
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(base);
+        Beta.installTinker();
     }
 
     public static AppContext getInstance() {

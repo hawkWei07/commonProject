@@ -21,6 +21,7 @@ import cn.hawk.commonproject.common.Constants;
 import cn.hawk.commonproject.contracts.MainContract;
 import cn.hawk.commonproject.presents.MainPresnter;
 import cn.hawk.commonproject.services.FloatWindowService;
+import cn.hawk.commonproject.ui.activities.BuglyHotfixActivity;
 import cn.hawk.commonproject.ui.activities.CaptureActivity;
 import cn.hawk.commonproject.ui.activities.CardDisplayActivity;
 import cn.hawk.commonproject.ui.activities.CoverFlowActivity;
@@ -62,6 +63,8 @@ public class MainFragment extends MVPFragment<MainPresnter> implements MainContr
     Button btnGoWifi;
     @BindView(R.id.btn_start_scheduler)
     Button btnStartScheduler;
+    @BindView(R.id.btn_go_bugly_hotfix)
+    Button btnGoBuglyHotfix;
 
     public static MainFragment newInstance() {
         Bundle args = new Bundle();
@@ -99,6 +102,7 @@ public class MainFragment extends MVPFragment<MainPresnter> implements MainContr
         btnGoHL.setOnClickListener(this);
         btnGoWifi.setOnClickListener(this);
         btnStartScheduler.setOnClickListener(this);
+        btnGoBuglyHotfix.setOnClickListener(this);
     }
 
     @Override
@@ -178,6 +182,9 @@ public class MainFragment extends MVPFragment<MainPresnter> implements MainContr
             case R.id.btn_start_scheduler:
                 goScheduler();
                 break;
+            case R.id.btn_go_bugly_hotfix:
+                goBuglyHotFix();
+                break;
         }
     }
 
@@ -212,6 +219,10 @@ public class MainFragment extends MVPFragment<MainPresnter> implements MainContr
 
     public void goScheduler() {
         startActivity(new Intent(getActivity(), SchedulerActivity.class));
+    }
+
+    public void goBuglyHotFix() {
+        startActivity(new Intent(getActivity(), BuglyHotfixActivity.class));
     }
 
     private boolean checkFloatWindowPermission() {
