@@ -20,7 +20,7 @@ public class AppContext extends BaseApplication {
     public void onCreate() {
         super.onCreate();
         instance = this;
-        Bugly.init(this, "e047d34325", true);
+        Bugly.init(this, "e047d34325", false);
     }
 
     @Override
