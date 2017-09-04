@@ -30,6 +30,6 @@ public class BuglyHotfixActivity extends BaseActivity {
     }
 
     private void showToast() {
-        Toast.makeText(this, "这是修复版本", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "基础版本2.0---修复版本1", Toast.LENGTH_SHORT).show();
     }
 }

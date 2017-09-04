@@ -4,7 +4,8 @@ import android.content.Context;
 import android.support.multidex.MultiDex;
 
 import com.tencent.bugly.Bugly;
-import com.tencent.bugly.beta.Beta;
+import com.tencent.bugly.crashreport.CrashReport;
+//import com.tencent.bugly.beta.Beta;
 
 import cn.hawk.commonlib.base.BaseApplication;
 import cn.hawk.commonlib.utils.LogUtils;
@@ -20,14 +21,16 @@ public class AppContext extends BaseApplication {
     public void onCreate() {
         super.onCreate();
         instance = this;
-        Bugly.init(this, "e047d34325", false);
+        CrashReport.UserStrategy userStrategy = new CrashReport.UserStrategy(getApplicationContext());
+        userStrategy.setAppChannel("cqtp");
+        Bugly.init(this, "e047d34325", true, userStrategy);
     }
 
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
         MultiDex.install(base);
-        Beta.installTinker();
+//        Beta.installTinker();
     }
 
     public static AppContext getInstance() {
